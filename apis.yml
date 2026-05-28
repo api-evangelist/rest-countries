@@ -1,0 +1,32 @@
+aid: rest-countries
+name: REST Countries
+description: "Get information about countries via a RESTful API"
+url: https://restcountries.com
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Geocoding"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Geocoding
+  - Public APIs
+apis:
+  - name: REST Countries
+    description: "Get information about countries via a RESTful API"
+    humanURL: https://restcountries.com
+    baseURL: https://restcountries.com
+    tags:
+      - Geocoding
+    properties:
+      - type: Documentation
+        url: https://restcountries.com
+common:
+  - type: Website
+    url: https://restcountries.com
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
