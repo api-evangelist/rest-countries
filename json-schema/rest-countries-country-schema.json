@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/rest-countries/main/json-schema/rest-countries-country-schema.json",
+  "title": "Country",
+  "description": "A country resource as returned by the REST Countries API (restcountries.com v3.1).",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object",
+      "description": "Country name, including official and common forms plus per-language native names.",
+      "properties": {
+        "common": { "type": "string", "description": "Common country name in English." },
+        "official": { "type": "string", "description": "Official country name in English." },
+        "nativeName": {
+          "type": "object",
+          "description": "Native names keyed by ISO 639-3 language code.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "official": { "type": "string" },
+              "common": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "tld": { "type": "array", "items": { "type": "string" }, "description": "Internet top-level domains assigned to the country." },
+    "cca2": { "type": "string", "minLength": 2, "maxLength": 2, "description": "ISO 3166-1 alpha-2 code." },
+    "ccn3": { "type": "string", "description": "ISO 3166-1 numeric (UN M49) code." },
+    "cca3": { "type": "string", "minLength": 3, "maxLength": 3, "description": "ISO 3166-1 alpha-3 code." },
+    "cioc": { "type": "string", "description": "International Olympic Committee code." },
+    "independent": { "type": "boolean", "description": "ISO 3166-1 independence status." },
+    "status": { "type": "string", "description": "ISO 3166-1 assignment status." },
+    "unMember": { "type": "boolean", "description": "Whether the country is a UN member." },
+    "currencies": {
+      "type": "object",
+      "description": "Currencies keyed by ISO 4217 code.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "symbol": { "type": "string" }
+        }
+      }
+    },
+    "idd": {
+      "type": "object",
+      "description": "International calling code descriptor.",
+      "properties": {
+        "root": { "type": "string" },
+        "suffixes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "capital": { "type": "array", "items": { "type": "string" }, "description": "List of capital cities." },
+    "altSpellings": { "type": "array", "items": { "type": "string" }, "description": "Alternate spellings of the country name." },
+    "region": { "type": "string", "description": "UN demographic region." },
+    "subregion": { "type": "string", "description": "UN demographic subregion." },
+    "languages": {
+      "type": "object",
+      "description": "Official languages keyed by ISO 639-3 code.",
+      "additionalProperties": { "type": "string" }
+    },
+    "translations": {
+      "type": "object",
+      "description": "Country name translations keyed by ISO 639-3 code.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "official": { "type": "string" },
+          "common": { "type": "string" }
+        }
+      }
+    },
+    "latlng": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2, "description": "Country latitude and longitude." },
+    "landlocked": { "type": "boolean", "description": "Whether the country has no coastline." },
+    "borders": { "type": "array", "items": { "type": "string" }, "description": "ISO 3166-1 alpha-3 codes of bordering countries." },
+    "area": { "type": "number", "description": "Geographic area in square kilometres." },
+    "demonyms": {
+      "type": "object",
+      "description": "Demonyms keyed by language code with gendered variants.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "f": { "type": "string" },
+          "m": { "type": "string" }
+        }
+      }
+    },
+    "flag": { "type": "string", "description": "Unicode flag emoji." },
+    "maps": {
+      "type": "object",
+      "description": "Links to external mapping services.",
+      "properties": {
+        "googleMaps": { "type": "string", "format": "uri" },
+        "openStreetMaps": { "type": "string", "format": "uri" }
+      }
+    },
+    "population": { "type": "integer", "description": "Estimated population." },
+    "gini": {
+      "type": "object",
+      "description": "World Bank Gini index keyed by year.",
+      "additionalProperties": { "type": "number" }
+    },
+    "fifa": { "type": "string", "description": "FIFA country code." },
+    "car": {
+      "type": "object",
+      "description": "Vehicular registration data.",
+      "properties": {
+        "signs": { "type": "array", "items": { "type": "string" } },
+        "side": { "type": "string", "enum": ["left", "right"] }
+      }
+    },
+    "timezones": { "type": "array", "items": { "type": "string" }, "description": "Country timezones in UTC±HH:MM form." },
+    "continents": { "type": "array", "items": { "type": "string" }, "description": "Continents that contain the country." },
+    "flags": {
+      "type": "object",
+      "description": "Flag image references.",
+      "properties": {
+        "png": { "type": "string", "format": "uri" },
+        "svg": { "type": "string", "format": "uri" },
+        "alt": { "type": "string" }
+      }
+    },
+    "coatOfArms": {
+      "type": "object",
+      "description": "Coat of arms image references.",
+      "properties": {
+        "png": { "type": "string", "format": "uri" },
+        "svg": { "type": "string", "format": "uri" }
+      }
+    },
+    "startOfWeek": { "type": "string", "enum": ["monday", "sunday", "saturday"] },
+    "capitalInfo": {
+      "type": "object",
+      "properties": {
+        "latlng": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 }
+      }
+    },
+    "postalCode": {
+      "type": "object",
+      "properties": {
+        "format": { "type": "string" },
+        "regex": { "type": "string" }
+      }
+    }
+  }
+}

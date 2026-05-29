@@ -1,0 +1,101 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: REST Countries
+providerId: rest-countries
+created: '2026-05-29'
+modified: '2026-05-29'
+tags:
+  - Countries
+  - Geography
+  - Geocoding
+  - Open Source
+  - Reference Data
+description: >-
+  Plans for REST Countries (restcountries.com). The hosted instance is a fully
+  free, community-run, open-source service distributed under MPL-2.0. There is
+  no commercial pricing surface — only soft fair-use limits and an implicit
+  best-effort SLA. Self-hosting the open-source distribution is an option for
+  organizations that need stronger guarantees.
+plans:
+  - id: rest-countries-free
+    name: Free (Hosted)
+    type: free
+    description: >-
+      Free, public, unauthenticated access to the hosted REST Countries v3.1
+      API. No sign-up, no API key, no per-account quota. Subject only to soft
+      fair-use rate limiting at the edge.
+    entries:
+      - label: API Requests
+        description: Unmetered request volume against the hosted endpoint, subject to fair use.
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: global
+        domains:
+          - https://restcountries.com/v3.1
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Rate Limit
+        description: Soft fair-use rate limit enforced at the edge.
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: -1
+        timeFrame: minute
+        geo: global
+        domains:
+          - https://restcountries.com/v3.1
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Public Documentation
+      - name: Community Support (GitHub / GitLab Issues)
+      - name: All v3.1 Endpoints
+      - name: No Authentication Required
+      - name: REST Countries v3.1
+  - id: rest-countries-self-hosted
+    name: Self-Hosted (Open Source)
+    type: open-source
+    description: >-
+      Run REST Countries inside your own infrastructure from the upstream
+      Java/Maven build (github.com/apilayer/restcountries mirror or the
+      gitlab.com/restcountries/restcountries canonical source). Provides full
+      control over uptime, latency, version pinning, and capacity at zero
+      licence cost under MPL-2.0.
+    entries:
+      - label: Licence Cost
+        description: Mozilla Public License 2.0 — no licence fee.
+        name: licence
+        type: quota
+        metric: licence
+        limit: -1
+        timeFrame: perpetual
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: API Requests
+        description: Bounded only by self-provisioned infrastructure capacity.
+        name: api_requests
+        type: quota
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: self-hosted
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: MPL-2.0 Source Code
+      - name: Maven Build
+      - name: Full Endpoint Parity
+      - name: Self-Managed Capacity
+      - name: Self-Managed SLA
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

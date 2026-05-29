@@ -1,0 +1,67 @@
+extends: ["spectral:oas"]
+documentationUrl: https://restcountries.com
+rules:
+  rc-info-title:
+    description: API title must mention REST Countries.
+    given: "$.info.title"
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "REST Countries"
+  rc-server-base-url:
+    description: Servers must reference https://restcountries.com/v3.1.
+    given: "$.servers[*].url"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "restcountries.com/v3.1"
+  rc-no-auth:
+    description: REST Countries is an unauthenticated public API; no security schemes should be required.
+    given: "$.security"
+    severity: warn
+    then:
+      function: falsy
+  rc-operation-id:
+    description: Every operation must define an operationId.
+    given: "$.paths.*.get"
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+  rc-operation-tags:
+    description: Every operation must define at least one tag.
+    given: "$.paths.*.get"
+    severity: error
+    then:
+      field: tags
+      function: truthy
+  rc-title-case-summary:
+    description: Operation summaries should be Title Case (each major word capitalized).
+    given: "$.paths.*.get.summary"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-zA-Z0-9]*)(\\s(?:[A-Z][a-zA-Z0-9]*|By|And|Or|Of|In|On|For|To|A|An|The))*$"
+  rc-fields-parameter:
+    description: GET operations should accept the `fields` query parameter for partial responses.
+    given: "$.paths.*.get.parameters[?(@.name == 'fields')]"
+    severity: info
+    then:
+      function: truthy
+  rc-404-response:
+    description: Lookup endpoints should document a 404 response.
+    given: "$.paths[?(@property != '/all' && @property != '/independent')].get.responses"
+    severity: warn
+    then:
+      field: '404'
+      function: truthy
+  rc-country-schema-required:
+    description: Spec must define the Country schema.
+    given: "$.components.schemas"
+    severity: error
+    then:
+      field: Country
+      function: truthy

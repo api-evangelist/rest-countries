@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "rc": "https://restcountries.com/v3.1/vocab#",
+    "iso": "https://www.iso.org/obp/ui/#iso:std:iso:3166:-1:en#",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Country": "schema:Country",
+    "name": "schema:name",
+    "common": "schema:alternateName",
+    "official": "schema:legalName",
+    "nativeName": "rc:nativeName",
+
+    "cca2": "rc:cca2",
+    "cca3": "rc:cca3",
+    "ccn3": "rc:ccn3",
+    "cioc": "rc:cioc",
+    "tld": "schema:url",
+
+    "independent": "rc:independent",
+    "status": "rc:isoAssignmentStatus",
+    "unMember": "rc:unMember",
+
+    "currencies": "rc:currencies",
+    "Currency": "schema:Currency",
+    "symbol": "schema:currencySymbol",
+
+    "idd": "rc:internationalDirectDialing",
+    "root": "rc:iddRoot",
+    "suffixes": "rc:iddSuffixes",
+
+    "capital": "schema:capital",
+    "capitalInfo": "rc:capitalInfo",
+
+    "altSpellings": "schema:alternateName",
+    "region": "rc:region",
+    "subregion": "rc:subregion",
+    "continents": "rc:continents",
+
+    "languages": "schema:availableLanguage",
+    "translations": "rc:translations",
+
+    "latlng": "geo:lat_long",
+    "landlocked": "rc:landlocked",
+    "borders": "rc:bordersWith",
+    "area": "schema:area",
+    "population": "rc:population",
+    "demonyms": "rc:demonyms",
+    "flag": "schema:image",
+    "flags": "schema:image",
+    "coatOfArms": "rc:coatOfArms",
+    "maps": "schema:hasMap",
+    "googleMaps": "schema:url",
+    "openStreetMaps": "schema:url",
+    "gini": "rc:giniIndex",
+    "fifa": "rc:fifaCode",
+    "car": "rc:car",
+    "side": "rc:drivingSide",
+    "signs": "rc:carSigns",
+    "timezones": "schema:timeZone",
+    "startOfWeek": "rc:startOfWeek",
+    "postalCode": "schema:postalCode",
+    "format": "rc:postalCodeFormat",
+    "regex": "rc:postalCodeRegex"
+  }
+}

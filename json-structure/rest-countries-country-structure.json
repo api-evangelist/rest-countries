@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/rest-countries/main/json-structure/rest-countries-country-structure.json",
+  "name": "Country",
+  "description": "A country resource as returned by the REST Countries API (restcountries.com v3.1).",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object",
+      "description": "Country name including official and common forms plus per-language native names.",
+      "properties": {
+        "common": { "type": "string", "description": "Common country name in English." },
+        "official": { "type": "string", "description": "Official country name in English." },
+        "nativeName": {
+          "type": "object",
+          "description": "Native names keyed by ISO 639-3 language code.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "official": { "type": "string" },
+              "common": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "tld": { "type": "array", "items": { "type": "string" } },
+    "cca2": { "type": "string", "minLength": 2, "maxLength": 2 },
+    "ccn3": { "type": "string" },
+    "cca3": { "type": "string", "minLength": 3, "maxLength": 3 },
+    "cioc": { "type": "string" },
+    "independent": { "type": "boolean" },
+    "status": { "type": "string" },
+    "unMember": { "type": "boolean" },
+    "currencies": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "symbol": { "type": "string" }
+        }
+      }
+    },
+    "idd": {
+      "type": "object",
+      "properties": {
+        "root": { "type": "string" },
+        "suffixes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "capital": { "type": "array", "items": { "type": "string" } },
+    "altSpellings": { "type": "array", "items": { "type": "string" } },
+    "region": { "type": "string" },
+    "subregion": { "type": "string" },
+    "languages": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "translations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "official": { "type": "string" },
+          "common": { "type": "string" }
+        }
+      }
+    },
+    "latlng": { "type": "array", "items": { "type": "double" }, "minItems": 2, "maxItems": 2 },
+    "landlocked": { "type": "boolean" },
+    "borders": { "type": "array", "items": { "type": "string" } },
+    "area": { "type": "double" },
+    "demonyms": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "f": { "type": "string" },
+          "m": { "type": "string" }
+        }
+      }
+    },
+    "flag": { "type": "string" },
+    "maps": {
+      "type": "object",
+      "properties": {
+        "googleMaps": { "type": "uri" },
+        "openStreetMaps": { "type": "uri" }
+      }
+    },
+    "population": { "type": "int64" },
+    "gini": {
+      "type": "object",
+      "additionalProperties": { "type": "double" }
+    },
+    "fifa": { "type": "string" },
+    "car": {
+      "type": "object",
+      "properties": {
+        "signs": { "type": "array", "items": { "type": "string" } },
+        "side": { "type": "string", "enum": ["left", "right"] }
+      }
+    },
+    "timezones": { "type": "array", "items": { "type": "string" } },
+    "continents": { "type": "array", "items": { "type": "string" } },
+    "flags": {
+      "type": "object",
+      "properties": {
+        "png": { "type": "uri" },
+        "svg": { "type": "uri" },
+        "alt": { "type": "string" }
+      }
+    },
+    "coatOfArms": {
+      "type": "object",
+      "properties": {
+        "png": { "type": "uri" },
+        "svg": { "type": "uri" }
+      }
+    },
+    "startOfWeek": { "type": "string", "enum": ["monday", "sunday", "saturday"] },
+    "capitalInfo": {
+      "type": "object",
+      "properties": {
+        "latlng": { "type": "array", "items": { "type": "double" }, "minItems": 2, "maxItems": 2 }
+      }
+    },
+    "postalCode": {
+      "type": "object",
+      "properties": {
+        "format": { "type": "string" },
+        "regex": { "type": "string" }
+      }
+    }
+  }
+}

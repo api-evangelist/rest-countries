@@ -1,0 +1,80 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: REST Countries
+providerId: rest-countries
+created: '2026-05-29'
+modified: '2026-05-29'
+tags:
+  - Countries
+  - Geography
+  - Open Source
+  - Reference Data
+  - Rate Limiting
+  - Fair Use
+description: >-
+  Rate limit profile for the hosted REST Countries v3.1 API. REST Countries is a
+  free, unauthenticated, community-run service. It does not publish hard per-key
+  rate limits; the operator applies soft fair-use throttling at the CDN edge to
+  protect availability for all consumers. Heavy consumers are encouraged to
+  self-host the MPL-2.0 open-source distribution to remove all upstream limits.
+headers:
+  limit: none
+  remaining: none
+  reset: none
+  retryAfter: Retry-After
+  policy: none
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: hosted
+    name: Hosted Fair-Use Soft Limit
+    scope: ip
+    metric: requests_per_minute
+    limit: -1
+    burst: -1
+    timeFrame: minute
+    applies:
+      - REST Countries v3.1
+    notes: >-
+      Soft, undocumented fair-use throttling enforced at the edge to prevent
+      abuse. Treat published limit as advisory; expect occasional 429/503 under
+      load. Cache responses aggressively and use the `fields` query parameter to
+      reduce payload size.
+  - tier: hosted
+    name: Hosted Fair-Use Daily Soft Quota
+    scope: ip
+    metric: requests_per_day
+    limit: -1
+    timeFrame: day
+    applies:
+      - REST Countries v3.1
+    notes: >-
+      No hard daily quota is published. Bulk consumers (full `/all` mirrors,
+      crawlers) should either self-host or cache locally.
+  - tier: self-hosted
+    name: Self-Hosted (Unlimited)
+    scope: instance
+    metric: requests_per_minute
+    limit: -1
+    timeFrame: minute
+    applies:
+      - REST Countries Self-Hosted
+    notes: Bounded only by the capacity of the operator's own infrastructure.
+recommendations:
+  - >-
+    Use the `fields` query parameter on every call (mandatory on `/all`) to
+    minimize bandwidth and reduce pressure on shared capacity.
+  - >-
+    Cache responses client-side. The country dataset changes infrequently
+    (typically only when ISO 3166-1 publishes updates).
+  - >-
+    For production workloads, mirror the upstream JSON or self-host the
+    MPL-2.0 distribution from gitlab.com/restcountries/restcountries.
+  - >-
+    Honor `Retry-After` on 429 responses and back off exponentially.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

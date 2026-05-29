@@ -1,0 +1,81 @@
+name: REST Countries Vocabulary
+description: >-
+  Controlled vocabulary of country reference concepts and resource attributes
+  exposed by the REST Countries v3.1 API.
+url: https://restcountries.com
+version: '3.1'
+modified: '2026-05-29'
+concepts:
+  - name: Country
+    description: A sovereign nation or dependent territory identified by ISO 3166-1 codes.
+  - name: ISO 3166-1 alpha-2 (cca2)
+    description: Two-letter country code (e.g. DE, US, JP).
+  - name: ISO 3166-1 alpha-3 (cca3)
+    description: Three-letter country code (e.g. DEU, USA, JPN).
+  - name: ISO 3166-1 numeric (ccn3)
+    description: Three-digit UN M49 numeric country code (e.g. 276 for Germany).
+  - name: CIOC
+    description: International Olympic Committee three-letter country code.
+  - name: FIFA Code
+    description: Three-letter country code used by FIFA.
+  - name: Common Name
+    description: Country name in everyday English usage.
+  - name: Official Name
+    description: Formal long-form country name in English.
+  - name: Native Name
+    description: Country name in one of its native languages.
+  - name: Translation
+    description: Country name in a non-native language other than English.
+  - name: Capital
+    description: Designated capital city or cities of a country.
+  - name: Region
+    description: UN demographic region (Africa, Americas, Antarctic, Asia, Europe, Oceania).
+  - name: Subregion
+    description: UN demographic subregion (e.g. Northern Europe, Southern Asia).
+  - name: Continent
+    description: Continental landmass that contains the country.
+  - name: Currency
+    description: ISO 4217 currency code, name, and symbol used in the country.
+  - name: Language
+    description: Official language of the country keyed by ISO 639-3 code.
+  - name: Top Level Domain (TLD)
+    description: Internet country-code top-level domain assigned to the country.
+  - name: International Direct Dialing (IDD)
+    description: International dialing prefix with root and suffix components.
+  - name: Timezone
+    description: Country timezone expressed as UTC±HH:MM offset.
+  - name: Latitude / Longitude
+    description: Geographic coordinates of the country and its capital in decimal degrees.
+  - name: Area
+    description: Geographic area of the country in square kilometres.
+  - name: Population
+    description: Estimated total population.
+  - name: Landlocked
+    description: Boolean indicating whether the country has no coastline.
+  - name: Borders
+    description: List of bordering countries as ISO 3166-1 alpha-3 codes.
+  - name: Independent
+    description: ISO 3166-1 independence flag.
+  - name: UN Member
+    description: Boolean indicating United Nations membership.
+  - name: ISO 3166 Assignment Status
+    description: Codeset assignment status (officially-assigned, user-assigned, etc.).
+  - name: Demonym
+    description: Designation for inhabitants of the country, gendered.
+  - name: Flag
+    description: PNG and SVG flag image references and emoji.
+  - name: Coat of Arms
+    description: PNG and SVG coat of arms image references.
+  - name: Gini Index
+    description: World Bank Gini income inequality index, keyed by reporting year.
+  - name: Driving Side
+    description: Side of the road on which vehicles are driven (left or right).
+  - name: Start of Week
+    description: First day of the week observed (monday, sunday, saturday).
+  - name: Postal Code Format
+    description: Postal code format mask and validation regex used in the country.
+  - name: Regional Bloc
+    description: Trade or political bloc to which the country belongs (deprecated in v3.1).
+authentication:
+  - name: None
+    description: REST Countries v3.1 is a fully public, unauthenticated API.

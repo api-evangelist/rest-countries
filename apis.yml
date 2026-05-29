@@ -1,32 +1,135 @@
 aid: rest-countries
 name: REST Countries
-description: "Get information about countries via a RESTful API"
-url: https://restcountries.com
-specificationVersion: '0.20'
-created: '2026-05-28'
-modified: '2026-05-28'
-x-source: public-apis/public-apis
-x-category: "Geocoding"
-x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+kind: opensource
+description: >-
+  REST Countries is a free, open-source RESTful API that returns rich country
+  reference data — ISO 3166-1 codes (cca2, cca3, ccn3, cioc), common/official
+  and native names, translations, capitals, regions and subregions, continents,
+  currencies, languages, calling codes, top-level domains, timezones, geographic
+  coordinates, borders, area, population, demonyms, flags and coats of arms,
+  postal code formats, Gini index, FIFA code, independence and UN membership
+  status, driving side, and start of week. The canonical hosted instance runs at
+  restcountries.com (v3.1) and the source is community-maintained at
+  github.com/apilayer/restcountries (mirror of gitlab.com/restcountries/restcountries),
+  licensed under MPL-2.0. The hosted API is unauthenticated and free; for
+  production use the project encourages self-hosting from source.
+url: https://raw.githubusercontent.com/api-evangelist/rest-countries/main/apis.yml
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/rest-countries.png
+type: Index
+access: Public
+position: Provider
 tags:
+  - Countries
   - Geocoding
+  - Geography
+  - ISO 3166
+  - Open Source
   - Public APIs
+  - Reference Data
+  - Currencies
+  - Languages
+  - Capitals
+  - Regions
+  - Subregions
+  - Translations
+created: '2026-05-28'
+modified: '2026-05-29'
+specificationVersion: '0.20'
 apis:
-  - name: REST Countries
-    description: "Get information about countries via a RESTful API"
+  - aid: rest-countries:rest-countries
+    name: REST Countries
+    description: >-
+      Free, unauthenticated, read-only REST API for country reference data.
+      Provides endpoints for bulk listing and for lookups by name, ISO alpha
+      code (cca2/cca3/ccn3/cioc), currency, language, capital, region,
+      subregion, translation, demonym, and independence status. Response
+      payloads can be trimmed with the `fields` query parameter (required on
+      `/all`).
     humanURL: https://restcountries.com
-    baseURL: https://restcountries.com
-    tags:
-      - Geocoding
+    baseURL: https://restcountries.com/v3.1
     properties:
       - type: Documentation
         url: https://restcountries.com
+      - type: GitHubRepository
+        url: https://github.com/apilayer/restcountries
+      - type: SourceRepository
+        url: https://gitlab.com/restcountries/restcountries
+      - type: OpenAPI
+        url: openapi/rest-countries-openapi.yml
+      - type: JSONSchema
+        url: json-schema/rest-countries-country-schema.json
+      - type: JSONStructure
+        url: json-structure/rest-countries-country-structure.json
+      - type: JSON-LD
+        url: json-ld/rest-countries-context.jsonld
+      - type: Example
+        url: examples/rest-countries-country-example.json
+      - type: Example
+        url: examples/rest-countries-by-region-example.json
+      - type: NaftikoCapability
+        url: capabilities/rest-countries-lookup.yaml
+      - type: Plans
+        url: plans/rest-countries-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/rest-countries-rate-limits.yml
+    tags:
+      - Countries
+      - Geography
+      - ISO 3166
+      - Reference Data
+      - REST
 common:
   - type: Website
     url: https://restcountries.com
-  - type: PublicAPIsListing
-    url: https://github.com/public-apis/public-apis
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: Mirror
+    url: https://github.com/restcountries/restcountries
+  - type: License
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+  - type: SpectralRules
+    url: rules/rest-countries-rules.yml
+  - type: Vocabulary
+    url: vocabulary/rest-countries-vocabulary.yml
+features:
+  - name: Bulk Country Listing
+    description: Retrieve the complete country dataset via `/all` with a required `fields` selector.
+  - name: Multi-Key Lookups
+    description: Search by name, ISO 3166-1 alpha-2/alpha-3/numeric/CIOC code, currency, language, capital, region, subregion, translation, demonym, or independence status.
+  - name: Sparse Fieldsets
+    description: Use the `fields` query parameter to request only the fields you need (up to 10), shrinking payload size.
+  - name: Rich Country Metadata
+    description: Each country exposes 30+ fields including flags, coat of arms, IDD calling codes, postal code regex, Gini index, FIFA code, timezones, driving side, and start of week.
+  - name: Image Assets
+    description: PNG and SVG flag and coat of arms images plus Unicode flag emoji are served directly in the payload.
+  - name: Map Service Links
+    description: Each country includes deep links to Google Maps and OpenStreetMap.
+  - name: Open Source
+    description: Mozilla Public License 2.0; the full Java/Maven source is available on GitHub and GitLab for self-hosting.
+useCases:
+  - name: Country Dropdowns and Selectors
+    description: Populate UI country pickers with localized names, flags, and ISO codes.
+  - name: Address and Postal Validation
+    description: Validate postal codes against per-country format and regex patterns.
+  - name: Phone Number Country Detection
+    description: Match international dialing prefixes to country names and flags.
+  - name: Currency and Language Reference
+    description: Resolve ISO 4217 currency codes and ISO 639 language codes against country metadata.
+  - name: Geographic Filtering
+    description: Group countries by UN region, subregion, or continent for reporting and segmentation.
+  - name: Educational and Trivia Apps
+    description: Drive quizzes, learning content, and atlases with structured country data.
+  - name: Data Enrichment
+    description: Enrich CRM, analytics, and logistics records with consistent country reference data.
+integrations:
+  - name: Java SDK
+    description: Reference Java client embedded in the upstream Maven project.
+  - name: Community SDKs
+    description: Community-published clients exist for JavaScript, Python, PHP, Ruby, Go, and Swift; none are official.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

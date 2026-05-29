@@ -1,0 +1,80 @@
+{
+  "name": {
+    "common": "Germany",
+    "official": "Federal Republic of Germany",
+    "nativeName": {
+      "deu": {
+        "official": "Bundesrepublik Deutschland",
+        "common": "Deutschland"
+      }
+    }
+  },
+  "tld": [".de"],
+  "cca2": "DE",
+  "ccn3": "276",
+  "cca3": "DEU",
+  "cioc": "GER",
+  "independent": true,
+  "status": "officially-assigned",
+  "unMember": true,
+  "currencies": {
+    "EUR": {
+      "name": "Euro",
+      "symbol": "€"
+    }
+  },
+  "idd": {
+    "root": "+4",
+    "suffixes": ["9"]
+  },
+  "capital": ["Berlin"],
+  "altSpellings": ["DE", "Federal Republic of Germany", "Bundesrepublik Deutschland"],
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "languages": {
+    "deu": "German"
+  },
+  "translations": {
+    "fra": { "official": "République fédérale d'Allemagne", "common": "Allemagne" },
+    "spa": { "official": "República Federal de Alemania", "common": "Alemania" }
+  },
+  "latlng": [51.0, 9.0],
+  "landlocked": false,
+  "borders": ["AUT", "BEL", "CZE", "DNK", "FRA", "LUX", "NLD", "POL", "CHE"],
+  "area": 357114.0,
+  "demonyms": {
+    "eng": { "f": "German", "m": "German" },
+    "fra": { "f": "Allemande", "m": "Allemand" }
+  },
+  "flag": "🇩🇪",
+  "maps": {
+    "googleMaps": "https://goo.gl/maps/mD9FBMq1nvXUBrkv6",
+    "openStreetMaps": "https://www.openstreetmap.org/relation/51477"
+  },
+  "population": 83240525,
+  "gini": { "2016": 31.9 },
+  "fifa": "GER",
+  "car": {
+    "signs": ["D"],
+    "side": "right"
+  },
+  "timezones": ["UTC+01:00"],
+  "continents": ["Europe"],
+  "flags": {
+    "png": "https://flagcdn.com/w320/de.png",
+    "svg": "https://flagcdn.com/de.svg",
+    "alt": "The flag of Germany is composed of three equal horizontal bands of black, red and gold."
+  },
+  "coatOfArms": {
+    "png": "https://mainfacts.com/media/images/coats_of_arms/de.png",
+    "svg": "https://mainfacts.com/media/images/coats_of_arms/de.svg"
+  },
+  "startOfWeek": "monday",
+  "capitalInfo": {
+    "latlng": [52.52, 13.4]
+  },
+  "postalCode": {
+    "format": "#####",
+    "regex": "^\\d{5}$"
+  }
+}

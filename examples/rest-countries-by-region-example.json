@@ -1,0 +1,32 @@
+[
+  {
+    "name": { "common": "France", "official": "French Republic" },
+    "cca2": "FR",
+    "cca3": "FRA",
+    "capital": ["Paris"],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "languages": { "fra": "French" },
+    "flag": "🇫🇷"
+  },
+  {
+    "name": { "common": "Germany", "official": "Federal Republic of Germany" },
+    "cca2": "DE",
+    "cca3": "DEU",
+    "capital": ["Berlin"],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "languages": { "deu": "German" },
+    "flag": "🇩🇪"
+  },
+  {
+    "name": { "common": "Netherlands", "official": "Kingdom of the Netherlands" },
+    "cca2": "NL",
+    "cca3": "NLD",
+    "capital": ["Amsterdam"],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "languages": { "nld": "Dutch" },
+    "flag": "🇳🇱"
+  }
+]
