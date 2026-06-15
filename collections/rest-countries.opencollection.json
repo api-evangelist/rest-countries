@@ -1,0 +1,398 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST Countries",
+    "version": "3.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "All",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/all",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Returns every country in the dataset. As of v3.1, the `fields` query parameter is required (up to 10 fields); requests without `fields` may return 400 Bad Request because the unfiltered payload is large."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Name",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/name/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Common or official country name (URL-encoded)."
+              },
+              {
+                "name": "fullText",
+                "value": "",
+                "type": "query",
+                "description": "When `true`, only an exact full-name match is returned."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Search countries by common or official name. Partial, case-insensitive substring matches are returned by default. Set `fullText=true` to require an exact full-name match."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alpha",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Country By Alpha Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/alpha/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "path",
+                "description": "ISO 3166-1 alpha-2, alpha-3, numeric, or CIOC code."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Lookup a country by ISO 3166-1 alpha-2 (cca2), alpha-3 (cca3), numeric (ccn3), or International Olympic Committee (cioc) code."
+        },
+        {
+          "info": {
+            "name": "Get Countries By Multiple Alpha Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/alpha",
+            "params": [
+              {
+                "name": "codes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 3166-1 codes (alpha-2, alpha-3, numeric, or CIOC)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Batch lookup of countries by a comma-separated list of alpha codes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Currency",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Currency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/currency/:currency",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path",
+                "description": "ISO 4217 currency code or currency name."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Search countries by ISO 4217 currency code or currency name (e.g. `usd`, `dollar`, `eur`)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Language",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Language",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/lang/:language",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "ISO 639 language code or language name."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Search countries by ISO 639 language code or language name (e.g. `spanish`, `cym`)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Capital",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Capital",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/capital/:capital",
+            "params": [
+              {
+                "name": "capital",
+                "value": "",
+                "type": "path",
+                "description": "Capital city name."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Search countries by their capital city."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Region",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Region",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/region/:region",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "UN region name."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Filter countries by UN demographic region (e.g. `europe`, `asia`, `africa`, `americas`, `oceania`)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subregion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Subregion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/subregion/:subregion",
+            "params": [
+              {
+                "name": "subregion",
+                "value": "",
+                "type": "path",
+                "description": "UN subregion name."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Filter countries by UN demographic subregion (e.g. `northern europe`, `southern asia`)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Translation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Translation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/translation/:translation",
+            "params": [
+              {
+                "name": "translation",
+                "value": "",
+                "type": "path",
+                "description": "Translated country name."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Search countries by translated name in any supported language."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Demonym",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Demonym",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/demonym/:demonym",
+            "params": [
+              {
+                "name": "demonym",
+                "value": "",
+                "type": "path",
+                "description": "Demonym (citizen designation)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Search countries by the demonym used for their inhabitants (e.g. `french`, `peruvian`)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Independent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Independent Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/independent",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "When `true`, returns only independent countries. When `false`, returns only non-independent territories."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Filter countries by ISO 3166-1 independence status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
