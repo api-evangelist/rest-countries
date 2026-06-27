@@ -55,11 +55,11 @@ apis:
         url: json-schema/rest-countries-country-schema.json
       - type: JSONStructure
         url: json-structure/rest-countries-country-structure.json
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/rest-countries-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/rest-countries-country-example.json
-      - type: Example
+      - type: Examples
         url: examples/rest-countries-by-region-example.json
       - type: Plans
         url: plans/rest-countries-plans-pricing.yml
