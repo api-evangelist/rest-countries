@@ -72,6 +72,8 @@ apis:
       - Reference Data
       - REST
 common:
+  - type: DomainSecurity
+    url: security/rest-countries-domain-security.yml
   - type: Website
     url: https://restcountries.com
   - type: Documentation
