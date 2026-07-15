@@ -72,6 +72,8 @@ apis:
       - Reference Data
       - REST
 common:
+  - type: AgenticAccess
+    url: agentic-access/rest-countries-agentic-access.yml
   - type: DomainSecurity
     url: security/rest-countries-domain-security.yml
   - type: Website
