@@ -1,0 +1,342 @@
+openapi: 3.1.0
+info:
+  title: REST Countries All Region API
+  description: REST Countries is a free, open-source RESTful API that returns information about world countries. Each country resource exposes ISO 3166-1 codes (cca2, cca3, ccn3, cioc), common and official names, native names, translations, capital cities, regions and subregions, continents, area, population, latitude and longitude, top level domains, calling codes, currencies, languages, timezones, demonyms, flags and coats of arms, postal code patterns, FIFA code, independence and UN membership status, regional bloc affiliations, driving side, Gini index, start of week, and links to map services. The API is read-only and unauthenticated; the canonical hosted version runs at restcountries.com and the source is maintained at github.com/apilayer/restcountries (community-run, MPL-2.0 licensed).
+  version: '3.1'
+  license:
+    name: Mozilla Public License 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+  contact:
+    name: REST Countries
+    url: https://restcountries.com
+servers:
+- url: https://restcountries.com/v3.1
+  description: REST Countries v3.1 production
+tags:
+- name: Region
+  description: Lookup countries within a UN geographic region.
+paths:
+  /region/{region}:
+    get:
+      operationId: getCountriesByRegion
+      summary: Get Countries By Region
+      description: Filter countries by UN demographic region (e.g. `europe`, `asia`, `africa`, `americas`, `oceania`).
+      tags:
+      - Region
+      parameters:
+      - name: region
+        in: path
+        required: true
+        description: UN region name.
+        schema:
+          type: string
+          enum:
+          - africa
+          - americas
+          - antarctic
+          - asia
+          - europe
+          - oceania
+      - $ref: '#/components/parameters/FieldsQuery'
+      responses:
+        '200':
+          description: A list of countries within the region.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Car:
+      type: object
+      description: Vehicular registration data.
+      properties:
+        signs:
+          type: array
+          items:
+            type: string
+          description: Distinguishing (oval) vehicle signs.
+        side:
+          type: string
+          enum:
+          - left
+          - right
+          description: Driving side.
+    CapitalInfo:
+      type: object
+      description: Capital city metadata.
+      properties:
+        latlng:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+          description: Capital latitude and longitude.
+    Country:
+      type: object
+      description: A country resource as returned by the REST Countries API.
+      properties:
+        name:
+          $ref: '#/components/schemas/Name'
+        tld:
+          type: array
+          items:
+            type: string
+          description: Internet top-level domains assigned to the country.
+        cca2:
+          type: string
+          minLength: 2
+          maxLength: 2
+          description: ISO 3166-1 alpha-2 code.
+        ccn3:
+          type: string
+          description: ISO 3166-1 numeric (UN M49) code.
+        cca3:
+          type: string
+          minLength: 3
+          maxLength: 3
+          description: ISO 3166-1 alpha-3 code.
+        cioc:
+          type: string
+          description: International Olympic Committee code.
+        independent:
+          type: boolean
+          description: ISO 3166-1 independence status.
+        status:
+          type: string
+          description: ISO 3166-1 assignment status (e.g. `officially-assigned`).
+        unMember:
+          type: boolean
+          description: Whether the country is a United Nations member.
+        currencies:
+          type: object
+          description: Currencies keyed by ISO 4217 code.
+          additionalProperties:
+            $ref: '#/components/schemas/Currency'
+        idd:
+          $ref: '#/components/schemas/InternationalDirectDialing'
+        capital:
+          type: array
+          items:
+            type: string
+          description: List of capital cities.
+        altSpellings:
+          type: array
+          items:
+            type: string
+          description: Alternate spellings of the country name.
+        region:
+          type: string
+          description: UN demographic region.
+        subregion:
+          type: string
+          description: UN demographic subregion.
+        languages:
+          type: object
+          description: Official languages keyed by ISO 639-3 code.
+          additionalProperties:
+            type: string
+        translations:
+          type: object
+          description: Country name translations keyed by ISO 639-3 code.
+          additionalProperties:
+            type: object
+            properties:
+              official:
+                type: string
+              common:
+                type: string
+        latlng:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+          description: Country latitude and longitude.
+        landlocked:
+          type: boolean
+          description: Whether the country has no coastline.
+        borders:
+          type: array
+          items:
+            type: string
+          description: ISO 3166-1 alpha-3 codes of bordering countries.
+        area:
+          type: number
+          description: Geographic area in square kilometres.
+        demonyms:
+          $ref: '#/components/schemas/Demonyms'
+        flag:
+          type: string
+          description: Unicode flag emoji.
+        maps:
+          $ref: '#/components/schemas/Maps'
+        population:
+          type: integer
+          description: Estimated population.
+        gini:
+          type: object
+          description: World Bank Gini index keyed by year.
+          additionalProperties:
+            type: number
+        fifa:
+          type: string
+          description: FIFA country code.
+        car:
+          $ref: '#/components/schemas/Car'
+        timezones:
+          type: array
+          items:
+            type: string
+          description: Country timezones in `UTC±HH:MM` form.
+        continents:
+          type: array
+          items:
+            type: string
+          description: Continents that contain the country.
+        flags:
+          $ref: '#/components/schemas/Flags'
+        coatOfArms:
+          $ref: '#/components/schemas/CoatOfArms'
+        startOfWeek:
+          type: string
+          enum:
+          - monday
+          - sunday
+          - saturday
+          description: First day of the week in the country.
+        capitalInfo:
+          $ref: '#/components/schemas/CapitalInfo'
+        postalCode:
+          $ref: '#/components/schemas/PostalCode'
+    Maps:
+      type: object
+      description: Links to external mapping services.
+      properties:
+        googleMaps:
+          type: string
+          format: uri
+        openStreetMaps:
+          type: string
+          format: uri
+    InternationalDirectDialing:
+      type: object
+      description: International calling code descriptor.
+      properties:
+        root:
+          type: string
+          description: IDD root (e.g. `+1`).
+        suffixes:
+          type: array
+          items:
+            type: string
+          description: Country code suffixes appended to the root.
+    Currency:
+      type: object
+      description: Currency descriptor keyed by ISO 4217 code.
+      properties:
+        name:
+          type: string
+        symbol:
+          type: string
+    Demonyms:
+      type: object
+      description: Demonyms keyed by language code with gendered variants.
+      additionalProperties:
+        type: object
+        properties:
+          f:
+            type: string
+          m:
+            type: string
+    Flags:
+      type: object
+      description: Flag image references.
+      properties:
+        png:
+          type: string
+          format: uri
+        svg:
+          type: string
+          format: uri
+        alt:
+          type: string
+          description: Textual description of the flag for accessibility.
+    PostalCode:
+      type: object
+      description: Postal code format descriptor.
+      properties:
+        format:
+          type: string
+          description: Human-readable postal code format mask.
+        regex:
+          type: string
+          description: Regular expression validating postal codes.
+    CoatOfArms:
+      type: object
+      description: Coat of arms image references.
+      properties:
+        png:
+          type: string
+          format: uri
+        svg:
+          type: string
+          format: uri
+    Name:
+      type: object
+      description: Country name, including official and common forms plus per-language native names.
+      properties:
+        common:
+          type: string
+          description: Common country name in English.
+        official:
+          type: string
+          description: Official country name in English.
+        nativeName:
+          type: object
+          description: Native names keyed by ISO 639-3 language code.
+          additionalProperties:
+            type: object
+            properties:
+              official:
+                type: string
+              common:
+                type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+        message:
+          type: string
+          description: Human readable error message.
+      required:
+      - status
+      - message
+  parameters:
+    FieldsQuery:
+      name: fields
+      in: query
+      required: false
+      description: Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`.
+      schema:
+        type: string
+      examples:
+        basic:
+          value: name,capital,region,flags
+  responses:
+    NotFound:
+      description: No country matched the query.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+externalDocs:
+  description: REST Countries Documentation
+  url: https://restcountries.com
