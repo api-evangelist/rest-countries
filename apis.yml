@@ -11,6 +11,18 @@ description: >-
   under MPL-2.0. The hosted API is unauthenticated and free; for production use the project encourages self-hosting from
   source.
 url: https://raw.githubusercontent.com/api-evangelist/rest-countries/main/apis.yml
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/rest-countries.png
 type: Index
 access: Public
@@ -33,44 +45,336 @@ created: '2026-05-28'
 modified: '2026-05-29'
 specificationVersion: '0.20'
 apis:
-  - aid: rest-countries:rest-countries
-    name: REST Countries
-    description: >-
-      Free, unauthenticated, read-only REST API for country reference data. Provides endpoints for bulk listing and for
-      lookups by name, ISO alpha code (cca2/cca3/ccn3/cioc), currency, language, capital, region, subregion,
-      translation, demonym, and independence status. Response payloads can be trimmed with the `fields` query parameter
-      (required on `/all`).
-    humanURL: https://restcountries.com
-    baseURL: https://restcountries.com/v3.1
-    properties:
-      - type: Documentation
-        url: https://restcountries.com
-      - type: GitHubRepository
-        url: https://github.com/apilayer/restcountries
-      - type: SourceRepository
-        url: https://gitlab.com/restcountries/restcountries
-      - type: OpenAPI
-        url: openapi/rest-countries-openapi.yml
-      - type: JSONSchema
-        url: json-schema/rest-countries-country-schema.json
-      - type: JSONStructure
-        url: json-structure/rest-countries-country-structure.json
-      - type: JSONLD
-        url: json-ld/rest-countries-context.jsonld
-      - type: Examples
-        url: examples/rest-countries-country-example.json
-      - type: Examples
-        url: examples/rest-countries-by-region-example.json
-      - type: Plans
-        url: plans/rest-countries-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/rest-countries-rate-limits.yml
-    tags:
-      - Countries
-      - Geography
-      - ISO 3166
-      - Reference Data
-      - REST
+- aid: rest-countries:rest-countries-all-api
+  name: REST Countries All API
+  description: Bulk retrieval of every country in the dataset.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - All
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-all-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-alpha-api
+  name: REST Countries Alpha API
+  description: Lookup countries by ISO 3166-1 alpha-2, alpha-3, numeric, or CIOC code.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Alpha
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-alpha-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-capital-api
+  name: REST Countries Capital API
+  description: Lookup countries by capital city.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Capital
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-capital-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-currency-api
+  name: REST Countries Currency API
+  description: Lookup countries by ISO 4217 currency code or currency name.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Currency
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-currency-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-demonym-api
+  name: REST Countries Demonym API
+  description: Lookup countries by demonym (citizen designation).
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Demonym
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-demonym-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-independent-api
+  name: REST Countries Independent API
+  description: Lookup countries filtered by ISO 3166-1 independence status.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Independent
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-independent-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-language-api
+  name: REST Countries Language API
+  description: Lookup countries by ISO 639 language code or language name.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Language
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-language-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-name-api
+  name: REST Countries Name API
+  description: Lookup countries by common or official name.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Name
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-name-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-region-api
+  name: REST Countries Region API
+  description: Lookup countries within a UN geographic region.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Region
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-region-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-subregion-api
+  name: REST Countries Subregion API
+  description: Lookup countries within a UN geographic subregion.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Subregion
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-subregion-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-translation-api
+  name: REST Countries Translation API
+  description: Lookup countries by translated name.
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Translation
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-translation-api-openapi.yml
+  - type: Documentation
+    url: https://restcountries.com
+  - type: GitHubRepository
+    url: https://github.com/apilayer/restcountries
+  - type: SourceRepository
+    url: https://gitlab.com/restcountries/restcountries
+  - type: JSONSchema
+    url: json-schema/rest-countries-country-schema.json
+  - type: JSONStructure
+    url: json-structure/rest-countries-country-structure.json
+  - type: JSONLD
+    url: json-ld/rest-countries-context.jsonld
+  - type: Examples
+    url: examples/rest-countries-country-example.json
+  - type: Examples
+    url: examples/rest-countries-by-region-example.json
+  - type: Plans
+    url: plans/rest-countries-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rest-countries-rate-limits.yml
 common:
   - type: AgenticAccess
     url: agentic-access/rest-countries-agentic-access.yml
