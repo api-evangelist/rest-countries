@@ -1,0 +1,34 @@
+{
+  "provider": "rest-countries",
+  "sources": [
+    "rest-countries-all-api-openapi.yml",
+    "rest-countries-alpha-api-openapi.yml",
+    "rest-countries-capital-api-openapi.yml",
+    "rest-countries-currency-api-openapi.yml",
+    "rest-countries-demonym-api-openapi.yml",
+    "rest-countries-independent-api-openapi.yml",
+    "rest-countries-language-api-openapi.yml",
+    "rest-countries-name-api-openapi.yml",
+    "rest-countries-region-api-openapi.yml",
+    "rest-countries-subregion-api-openapi.yml",
+    "rest-countries-translation-api-openapi.yml"
+  ],
+  "outputs": [
+    "rest-countries-all-api-openapi.yml",
+    "rest-countries-alpha-api-openapi.yml",
+    "rest-countries-capital-api-openapi.yml",
+    "rest-countries-currency-api-openapi.yml",
+    "rest-countries-demonym-api-openapi.yml",
+    "rest-countries-independent-api-openapi.yml",
+    "rest-countries-language-api-openapi.yml",
+    "rest-countries-name-api-openapi.yml",
+    "rest-countries-region-api-openapi.yml",
+    "rest-countries-subregion-api-openapi.yml",
+    "rest-countries-translation-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
