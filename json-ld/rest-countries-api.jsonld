@@ -1,0 +1,100 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "WebAPI",
+  "@id": "https://api.restcountries.com/countries/v5",
+  "name": "REST Countries API",
+  "description": "Free REST API providing comprehensive data about world countries including name, capital, currencies, languages, flags, population, and geographic information. Covers 250+ countries and dependencies with 80+ fields per country.",
+  "url": "https://restcountries.com",
+  "documentation": "https://restcountries.com/docs",
+  "provider": {
+    "@type": "Organization",
+    "name": "REST Countries",
+    "url": "https://restcountries.com"
+  },
+  "license": "https://www.mozilla.org/en-US/MPL/2.0/",
+  "termsOfService": "https://restcountries.com/terms",
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": "https://api.restcountries.com/countries/v5",
+    "serviceType": "REST API"
+  },
+  "potentialAction": [
+    {
+      "@type": "SearchAction",
+      "name": "List All Countries",
+      "description": "Retrieve a paginated list of all countries",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://api.restcountries.com/countries/v5?limit={limit}&offset={offset}",
+        "httpMethod": "GET"
+      }
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Search Countries by Name",
+      "description": "Search across all country name fields",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://api.restcountries.com/countries/v5/name?q={searchTerm}",
+        "httpMethod": "GET"
+      },
+      "query-input": "required name=searchTerm"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Search Countries by Code",
+      "description": "Search across all country code fields",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://api.restcountries.com/countries/v5/code?q={code}",
+        "httpMethod": "GET"
+      },
+      "query-input": "required name=code"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Lookup Country by ISO Alpha-2 Code",
+      "description": "Exact lookup of a country by ISO 3166-1 alpha-2 code",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://api.restcountries.com/countries/v5/alpha_2/{alpha2Code}",
+        "httpMethod": "GET"
+      },
+      "query-input": "required name=alpha2Code"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Lookup Country by ISO Alpha-3 Code",
+      "description": "Exact lookup of a country by ISO 3166-1 alpha-3 code",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://api.restcountries.com/countries/v5/alpha_3/{alpha3Code}",
+        "httpMethod": "GET"
+      },
+      "query-input": "required name=alpha3Code"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Filter Countries by Region",
+      "description": "Retrieve all countries in a specific geographic region",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://api.restcountries.com/countries/v5/region/{region}",
+        "httpMethod": "GET"
+      },
+      "query-input": "required name=region"
+    }
+  ],
+  "isRelatedTo": [
+    {
+      "@type": "Dataset",
+      "name": "ISO 3166-1 Country Codes",
+      "url": "https://www.iso.org/iso-3166-country-codes.html"
+    },
+    {
+      "@type": "Dataset",
+      "name": "UN Member States",
+      "url": "https://www.un.org/en/about-us/member-states"
+    }
+  ]
+}

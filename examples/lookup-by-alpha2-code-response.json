@@ -1,0 +1,165 @@
+{
+  "data": {
+    "objects": [
+      {
+        "names": {
+          "common": "Germany",
+          "official": "Federal Republic of Germany",
+          "alternates": ["Deutschland"],
+          "native": {
+            "deu": {
+              "common": "Deutschland",
+              "official": "Bundesrepublik Deutschland"
+            }
+          },
+          "translations": {
+            "fra": {
+              "common": "Allemagne",
+              "official": "République fédérale d'Allemagne"
+            },
+            "spa": {
+              "common": "Alemania",
+              "official": "República Federal de Alemania"
+            }
+          }
+        },
+        "codes": {
+          "alpha_2": "DE",
+          "alpha_3": "DEU",
+          "ccn3": "276",
+          "fips": "GM",
+          "gec": "GM",
+          "cioc": "GER",
+          "fifa": "GER"
+        },
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "continents": ["Europe"],
+        "landlocked": false,
+        "borders": ["AUT", "BEL", "CZE", "DNK", "FRA", "LUX", "NLD", "POL", "CHE"],
+        "area": {
+          "kilometers": 357114,
+          "miles": 137869
+        },
+        "coordinates": {
+          "lat": 51.0,
+          "lng": 9.0
+        },
+        "timezones": ["UTC+01:00"],
+        "population": 83240525,
+        "languages": [
+          {
+            "name": "German",
+            "native": "Deutsch",
+            "iso_code": "deu"
+          }
+        ],
+        "currencies": {
+          "EUR": {
+            "name": "Euro",
+            "symbol": "€"
+          }
+        },
+        "calling_codes": ["+49"],
+        "tlds": [".de"],
+        "capitals": [
+          {
+            "name": "Berlin",
+            "coordinates": {
+              "lat": 52.52437,
+              "lng": 13.41053
+            },
+            "primary": true,
+            "administrative": true,
+            "executive": true,
+            "legislative": true,
+            "judicial": true
+          }
+        ],
+        "demonyms": {
+          "eng": {
+            "m": "German",
+            "f": "German"
+          },
+          "deu": {
+            "m": "Deutscher",
+            "f": "Deutsche"
+          }
+        },
+        "flag": {
+          "emoji": "🇩🇪",
+          "unicode": "U+1F1E9 U+1F1EA",
+          "html_entity": "&#127465;&#127466;",
+          "url_png": "https://flagcdn.com/w320/de.png",
+          "url_svg": "https://flagcdn.com/de.svg",
+          "description": "The flag of Germany is composed of three equal horizontal bands of black, red and gold."
+        },
+        "memberships": {
+          "un": true,
+          "eu": true,
+          "eurozone": true,
+          "schengen": true,
+          "nato": true,
+          "commonwealth": false,
+          "oecd": true,
+          "g7": true,
+          "g20": true,
+          "brics": false,
+          "opec": false,
+          "african_union": false,
+          "asean": false,
+          "arab_league": false
+        },
+        "classification": {
+          "sovereign": true,
+          "un_member": true,
+          "un_observer": false,
+          "disputed": false,
+          "dependency": false,
+          "iso_status": "official"
+        },
+        "government_type": "Federal parliamentary republic",
+        "date": {
+          "start_of_week": "monday",
+          "fiscal_year_start": {
+            "government": {
+              "month": 1,
+              "day": 1
+            },
+            "corporate": {
+              "month": 1,
+              "day": 1,
+              "basis": "default"
+            }
+          }
+        },
+        "number_format": {
+          "decimal_separator": ",",
+          "thousands_separator": "."
+        },
+        "cars": {
+          "driving_side": "right",
+          "signs": ["D"]
+        },
+        "postal_code": {
+          "format": "#####",
+          "regex": "^\\d{5}$"
+        },
+        "links": {
+          "official": "https://www.bundesregierung.de",
+          "wikipedia": "https://en.wikipedia.org/wiki/Germany",
+          "open_street_maps": "https://www.openstreetmap.org/relation/51477",
+          "google_maps": "https://goo.gl/maps/mD9FBMq1nvXUBrkv6"
+        }
+      }
+    ],
+    "meta": {
+      "total": 1,
+      "count": 1,
+      "limit": 25,
+      "offset": 0,
+      "more": false,
+      "request_id": "req_02def456ghi789"
+    }
+  }
+}

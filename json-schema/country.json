@@ -1,0 +1,409 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.restcountries.com/schemas/country.json",
+  "title": "Country",
+  "description": "Comprehensive country data record from the REST Countries API",
+  "type": "object",
+  "properties": {
+    "names": {
+      "type": "object",
+      "description": "Country name data in various forms and languages",
+      "properties": {
+        "common": {
+          "type": "string",
+          "description": "Common English name of the country",
+          "examples": ["United States", "Germany"]
+        },
+        "official": {
+          "type": "string",
+          "description": "Official name of the country",
+          "examples": ["United States of America", "Federal Republic of Germany"]
+        },
+        "alternates": {
+          "type": "array",
+          "description": "Alternate names or spellings",
+          "items": { "type": "string" }
+        },
+        "native": {
+          "type": "object",
+          "description": "Native names keyed by ISO 639-3 language code",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "common": { "type": "string" },
+              "official": { "type": "string" }
+            }
+          }
+        },
+        "translations": {
+          "type": "object",
+          "description": "Translated names keyed by language code",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "common": { "type": "string" },
+              "official": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "codes": {
+      "type": "object",
+      "description": "Standardized country identifier codes",
+      "properties": {
+        "alpha_2": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 two-letter country code",
+          "pattern": "^[A-Z]{2}$",
+          "examples": ["US", "DE"]
+        },
+        "alpha_3": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-3 three-letter country code",
+          "pattern": "^[A-Z]{3}$",
+          "examples": ["USA", "DEU"]
+        },
+        "ccn3": {
+          "type": "string",
+          "description": "ISO 3166-1 numeric three-digit country code",
+          "examples": ["840", "276"]
+        },
+        "fips": {
+          "type": "string",
+          "description": "FIPS country code"
+        },
+        "gec": {
+          "type": "string",
+          "description": "GEC Entities country code"
+        },
+        "cioc": {
+          "type": "string",
+          "description": "International Olympic Committee country code"
+        },
+        "fifa": {
+          "type": "string",
+          "description": "FIFA country code"
+        }
+      }
+    },
+    "region": {
+      "type": "string",
+      "description": "Continent or major region",
+      "enum": ["Africa", "Americas", "Asia", "Europe", "Oceania", "Antarctic"],
+      "examples": ["Americas"]
+    },
+    "subregion": {
+      "type": "string",
+      "description": "Geographic sub-region",
+      "examples": ["Northern America"]
+    },
+    "continents": {
+      "type": "array",
+      "description": "Continent(s) the country belongs to",
+      "items": { "type": "string" },
+      "examples": [["North America"]]
+    },
+    "landlocked": {
+      "type": "boolean",
+      "description": "True if the country has no coastline"
+    },
+    "borders": {
+      "type": "array",
+      "description": "ISO alpha-3 codes of bordering countries",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}$"
+      },
+      "examples": [["CAN", "MEX"]]
+    },
+    "area": {
+      "type": "object",
+      "description": "Land area of the country",
+      "properties": {
+        "kilometers": {
+          "type": "number",
+          "description": "Land area in square kilometers",
+          "minimum": 0
+        },
+        "miles": {
+          "type": "number",
+          "description": "Land area in square miles",
+          "minimum": 0
+        }
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "description": "Geographic center coordinates",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "description": "Latitude of geographic center",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lng": {
+          "type": "number",
+          "description": "Longitude of geographic center",
+          "minimum": -180,
+          "maximum": 180
+        }
+      }
+    },
+    "timezones": {
+      "type": "array",
+      "description": "UTC timezone offsets",
+      "items": { "type": "string" },
+      "examples": [["UTC-05:00", "UTC-08:00"]]
+    },
+    "population": {
+      "type": "integer",
+      "description": "Current population estimate",
+      "minimum": 0,
+      "examples": [331000000]
+    },
+    "languages": {
+      "type": "array",
+      "description": "Languages spoken in the country",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "English name of the language" },
+          "native": { "type": "string", "description": "Native name of the language" },
+          "iso_code": { "type": "string", "description": "ISO 639 language code" }
+        }
+      }
+    },
+    "currencies": {
+      "type": "object",
+      "description": "Currencies used, keyed by ISO 4217 currency code",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Full currency name"
+          },
+          "symbol": {
+            "type": "string",
+            "description": "Currency symbol"
+          }
+        }
+      }
+    },
+    "calling_codes": {
+      "type": "array",
+      "description": "International telephone dialing codes",
+      "items": { "type": "string" },
+      "examples": [["+1"]]
+    },
+    "tlds": {
+      "type": "array",
+      "description": "Country-code top-level domain(s)",
+      "items": { "type": "string" },
+      "examples": [[".us"]]
+    },
+    "capitals": {
+      "type": "array",
+      "description": "Capital city or cities",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Name of the capital city" },
+          "coordinates": {
+            "type": "object",
+            "properties": {
+              "lat": { "type": "number" },
+              "lng": { "type": "number" }
+            }
+          },
+          "primary": { "type": "boolean" },
+          "constitutional": { "type": "boolean" },
+          "administrative": { "type": "boolean" },
+          "executive": { "type": "boolean" },
+          "legislative": { "type": "boolean" },
+          "judicial": { "type": "boolean" }
+        }
+      }
+    },
+    "demonyms": {
+      "type": "object",
+      "description": "Demonym forms by language code",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "m": { "type": "string", "description": "Masculine demonym form" },
+          "f": { "type": "string", "description": "Feminine demonym form" }
+        }
+      }
+    },
+    "flag": {
+      "type": "object",
+      "description": "Flag representation in various formats",
+      "properties": {
+        "emoji": { "type": "string", "description": "Flag emoji character" },
+        "unicode": { "type": "string", "description": "Unicode code points for flag emoji" },
+        "html_entity": { "type": "string", "description": "HTML numeric entity" },
+        "url_png": { "type": "string", "format": "uri", "description": "URL to PNG flag image" },
+        "url_svg": { "type": "string", "format": "uri", "description": "URL to SVG flag image" },
+        "description": { "type": "string", "description": "Accessibility text description of the flag" }
+      }
+    },
+    "memberships": {
+      "type": "object",
+      "description": "International organization memberships",
+      "properties": {
+        "un": { "type": "boolean" },
+        "eu": { "type": "boolean" },
+        "eurozone": { "type": "boolean" },
+        "schengen": { "type": "boolean" },
+        "nato": { "type": "boolean" },
+        "commonwealth": { "type": "boolean" },
+        "oecd": { "type": "boolean" },
+        "g7": { "type": "boolean" },
+        "g20": { "type": "boolean" },
+        "brics": { "type": "boolean" },
+        "opec": { "type": "boolean" },
+        "african_union": { "type": "boolean" },
+        "asean": { "type": "boolean" },
+        "arab_league": { "type": "boolean" }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "description": "Political and international classification",
+      "properties": {
+        "sovereign": { "type": "boolean", "description": "Self-governing state" },
+        "un_member": { "type": "boolean", "description": "United Nations member state" },
+        "un_observer": { "type": "boolean", "description": "UN permanent observer" },
+        "disputed": { "type": "boolean", "description": "Contested recognition" },
+        "dependency": { "type": "boolean", "description": "Dependent territory" },
+        "dependency_type": { "type": "string", "description": "Type of dependency" },
+        "iso_status": {
+          "type": "string",
+          "description": "ISO 3166 status",
+          "enum": ["official", "user_assigned"]
+        }
+      }
+    },
+    "government_type": {
+      "type": "string",
+      "description": "Form of government",
+      "examples": ["Federal presidential constitutional republic"]
+    },
+    "leaders": {
+      "type": "array",
+      "description": "Current political leaders (premium field)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "title": { "type": "string" },
+          "links": { "type": "object" }
+        }
+      }
+    },
+    "date": {
+      "type": "object",
+      "description": "Country-specific date and calendar conventions",
+      "properties": {
+        "start_of_week": { "type": "string", "examples": ["sunday", "monday"] },
+        "academic_year_start": {
+          "type": "object",
+          "properties": {
+            "month": { "type": "integer", "minimum": 1, "maximum": 12 },
+            "day": { "type": "integer", "minimum": 1, "maximum": 31 }
+          }
+        },
+        "fiscal_year_start": {
+          "type": "object",
+          "properties": {
+            "government": {
+              "type": "object",
+              "properties": {
+                "month": { "type": "integer", "minimum": 1, "maximum": 12 },
+                "day": { "type": "integer", "minimum": 1, "maximum": 31 }
+              }
+            },
+            "corporate": {
+              "type": "object",
+              "properties": {
+                "month": { "type": "integer", "minimum": 1, "maximum": 12 },
+                "day": { "type": "integer", "minimum": 1, "maximum": 31 },
+                "basis": { "type": "string", "enum": ["mandated", "default", "convention"] }
+              }
+            },
+            "personal": {
+              "type": "object",
+              "properties": {
+                "month": { "type": "integer", "minimum": 1, "maximum": 12 },
+                "day": { "type": "integer", "minimum": 1, "maximum": 31 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "number_format": {
+      "type": "object",
+      "description": "Number formatting conventions",
+      "properties": {
+        "decimal_separator": { "type": "string", "examples": [".", ","] },
+        "thousands_separator": { "type": "string", "examples": [",", "."] }
+      }
+    },
+    "cars": {
+      "type": "object",
+      "description": "Automobile-related country information",
+      "properties": {
+        "driving_side": {
+          "type": "string",
+          "enum": ["left", "right"]
+        },
+        "signs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "International vehicle registration codes"
+        }
+      }
+    },
+    "postal_code": {
+      "type": "object",
+      "description": "Postal code format information",
+      "properties": {
+        "format": { "type": "string", "description": "Postal code format mask" },
+        "regex": { "type": "string", "description": "Regex validation pattern" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "description": "External reference links for the country",
+      "properties": {
+        "official": { "type": "string", "format": "uri" },
+        "wikipedia": { "type": "string", "format": "uri" },
+        "open_street_maps": { "type": "string", "format": "uri" },
+        "google_maps": { "type": "string", "format": "uri" }
+      }
+    },
+    "economy": {
+      "type": "object",
+      "description": "Economic data",
+      "properties": {
+        "gini_coefficient": {
+          "type": "object",
+          "description": "Gini coefficients by year",
+          "additionalProperties": { "type": "number" }
+        }
+      }
+    },
+    "parent": {
+      "type": "object",
+      "description": "Sovereign parent country for dependencies",
+      "properties": {
+        "alpha_2": { "type": "string" },
+        "alpha_3": { "type": "string" }
+      }
+    }
+  }
+}

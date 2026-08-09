@@ -1,0 +1,195 @@
+{
+  "data": {
+    "objects": [
+      {
+        "names": {
+          "common": "United States",
+          "official": "United States of America",
+          "alternates": ["USA", "America"],
+          "native": {
+            "eng": {
+              "common": "United States",
+              "official": "United States of America"
+            }
+          },
+          "translations": {
+            "deu": {
+              "common": "Vereinigte Staaten",
+              "official": "Vereinigte Staaten von Amerika"
+            },
+            "fra": {
+              "common": "États-Unis",
+              "official": "États-Unis d'Amérique"
+            },
+            "spa": {
+              "common": "Estados Unidos",
+              "official": "Estados Unidos de América"
+            }
+          }
+        },
+        "codes": {
+          "alpha_2": "US",
+          "alpha_3": "USA",
+          "ccn3": "840",
+          "fips": "US",
+          "gec": "US",
+          "cioc": "USA",
+          "fifa": "USA"
+        },
+        "region": "Americas",
+        "subregion": "Northern America",
+        "continents": ["North America"],
+        "landlocked": false,
+        "borders": ["CAN", "MEX"],
+        "area": {
+          "kilometers": 9372610,
+          "miles": 3617827
+        },
+        "coordinates": {
+          "lat": 38.0,
+          "lng": -97.0
+        },
+        "timezones": [
+          "UTC-12:00",
+          "UTC-11:00",
+          "UTC-10:00",
+          "UTC-09:00",
+          "UTC-08:00",
+          "UTC-07:00",
+          "UTC-06:00",
+          "UTC-05:00",
+          "UTC-04:00",
+          "UTC+10:00",
+          "UTC+12:00"
+        ],
+        "population": 331893745,
+        "languages": [
+          {
+            "name": "English",
+            "native": "English",
+            "iso_code": "eng"
+          }
+        ],
+        "currencies": {
+          "USD": {
+            "name": "United States dollar",
+            "symbol": "$"
+          }
+        },
+        "calling_codes": ["+1"],
+        "tlds": [".us"],
+        "capitals": [
+          {
+            "name": "Washington D.C.",
+            "coordinates": {
+              "lat": 38.89511,
+              "lng": -77.03637
+            },
+            "primary": true,
+            "constitutional": false,
+            "administrative": true,
+            "executive": true,
+            "legislative": true,
+            "judicial": true
+          }
+        ],
+        "demonyms": {
+          "eng": {
+            "m": "American",
+            "f": "American"
+          },
+          "fra": {
+            "m": "Américain",
+            "f": "Américaine"
+          }
+        },
+        "flag": {
+          "emoji": "🇺🇸",
+          "unicode": "U+1F1FA U+1F1F8",
+          "html_entity": "&#127482;&#127480;",
+          "url_png": "https://flagcdn.com/w320/us.png",
+          "url_svg": "https://flagcdn.com/us.svg",
+          "description": "The flag of the United States of America is composed of thirteen equal horizontal bands of red alternating with white. A blue rectangle is superimposed on the upper hoist-side corner, bearing fifty small, white, five-pointed stars arranged in nine offset horizontal rows."
+        },
+        "memberships": {
+          "un": true,
+          "eu": false,
+          "eurozone": false,
+          "schengen": false,
+          "nato": true,
+          "commonwealth": false,
+          "oecd": true,
+          "g7": true,
+          "g20": true,
+          "brics": false,
+          "opec": false,
+          "african_union": false,
+          "asean": false,
+          "arab_league": false
+        },
+        "classification": {
+          "sovereign": true,
+          "un_member": true,
+          "un_observer": false,
+          "disputed": false,
+          "dependency": false,
+          "iso_status": "official"
+        },
+        "government_type": "Federal presidential constitutional republic",
+        "date": {
+          "start_of_week": "sunday",
+          "academic_year_start": {
+            "month": 9,
+            "day": 1
+          },
+          "fiscal_year_start": {
+            "government": {
+              "month": 10,
+              "day": 1
+            },
+            "corporate": {
+              "month": 1,
+              "day": 1,
+              "basis": "default"
+            },
+            "personal": {
+              "month": 1,
+              "day": 1
+            }
+          }
+        },
+        "number_format": {
+          "decimal_separator": ".",
+          "thousands_separator": ","
+        },
+        "cars": {
+          "driving_side": "right",
+          "signs": ["USA"]
+        },
+        "postal_code": {
+          "format": "#####-####",
+          "regex": "^\\d{5}(-\\d{4})?$"
+        },
+        "links": {
+          "official": "https://www.usa.gov",
+          "wikipedia": "https://en.wikipedia.org/wiki/United_States",
+          "open_street_maps": "https://www.openstreetmap.org/relation/148838",
+          "google_maps": "https://goo.gl/maps/e8M246zY4BSjkjAv6"
+        },
+        "economy": {
+          "gini_coefficient": {
+            "2019": 41.4
+          }
+        }
+      }
+    ],
+    "meta": {
+      "total": 249,
+      "count": 1,
+      "limit": 25,
+      "offset": 0,
+      "more": true,
+      "request_id": "req_01abc123def456"
+    }
+  }
+}

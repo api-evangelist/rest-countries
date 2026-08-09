@@ -1,0 +1,67 @@
+name: REST Countries FinOps
+description: Financial operations guidance for managing REST Countries API costs, optimizing usage, and planning budget across tiers.
+url: https://restcountries.com/plans
+cost_model:
+  type: monthly_subscription
+  billing_period: month
+  currency: USD
+  description: Flat monthly subscription fee per plan tier. Annual billing available at a discount.
+tiers:
+  - name: Free
+    monthly_cost: 0
+    annual_cost: 0
+    request_limit: 500
+    cost_per_request: 0
+  - name: Personal
+    monthly_cost: 15
+    annual_cost: 144
+    annual_savings: 36
+    request_limit: 25000
+    cost_per_request: 0.0006
+  - name: Professional
+    monthly_cost: 30
+    annual_cost: 288
+    annual_savings: 72
+    request_limit: 100000
+    cost_per_request: 0.0003
+  - name: Startup
+    monthly_cost: 50
+    annual_cost: 480
+    annual_savings: 120
+    request_limit: 200000
+    cost_per_request: 0.00025
+  - name: Business
+    monthly_cost: 120
+    annual_cost: 1152
+    annual_savings: 288
+    request_limit: 750000
+    cost_per_request: 0.00016
+optimization:
+  - tip: Use the response_fields parameter to return only required fields, reducing payload size.
+  - tip: Cache country data client-side; country data is relatively static and updates only every 4-8 hours depending on plan.
+  - tip: Use the Free plan for development and testing to avoid consuming paid quota.
+  - tip: Choose annual billing to save up to 20% compared to monthly billing.
+  - tip: Monitor usage via soft-limit email alerts at 50% and 80% to avoid service interruption.
+  - tip: Use pagination (limit and offset parameters) to fetch only the data needed per request.
+  - tip: Leaders and government_type are premium fields; only include them if your use case requires them to avoid unnecessary paid plan upgrades.
+budget_planning:
+  - scenario: Prototype or personal project
+    recommended_plan: Free
+    estimated_monthly_cost: 0
+    notes: 500 requests sufficient for low-traffic personal projects.
+  - scenario: Small production app
+    recommended_plan: Personal
+    estimated_monthly_cost: 15
+    notes: 25,000 requests supports small apps with regular traffic.
+  - scenario: Growing SaaS or commercial application
+    recommended_plan: Professional
+    estimated_monthly_cost: 30
+    notes: 100,000 requests with 4-hour sync and unlimited API keys.
+  - scenario: High-traffic startup
+    recommended_plan: Startup
+    estimated_monthly_cost: 50
+    notes: 200,000 requests with 99.99% SLA and Google Meet support.
+  - scenario: Enterprise or large-scale deployment
+    recommended_plan: Business
+    estimated_monthly_cost: 120
+    notes: 750,000 requests with EU endpoints, webhooks, audit logs, and dedicated endpoint.

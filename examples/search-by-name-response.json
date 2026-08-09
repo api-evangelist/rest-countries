@@ -1,0 +1,64 @@
+{
+  "data": {
+    "objects": [
+      {
+        "names": {
+          "common": "New Zealand",
+          "official": "New Zealand",
+          "alternates": ["Aotearoa"],
+          "native": {
+            "eng": {
+              "common": "New Zealand",
+              "official": "New Zealand"
+            },
+            "mri": {
+              "common": "Aotearoa",
+              "official": "Aotearoa"
+            }
+          }
+        },
+        "codes": {
+          "alpha_2": "NZ",
+          "alpha_3": "NZL",
+          "ccn3": "554"
+        },
+        "region": "Oceania",
+        "subregion": "Australia and New Zealand",
+        "population": 5084300,
+        "flag": {
+          "emoji": "🇳🇿",
+          "url_png": "https://flagcdn.com/w320/nz.png",
+          "url_svg": "https://flagcdn.com/nz.svg"
+        }
+      },
+      {
+        "names": {
+          "common": "Papua New Guinea",
+          "official": "Independent State of Papua New Guinea",
+          "alternates": []
+        },
+        "codes": {
+          "alpha_2": "PG",
+          "alpha_3": "PNG",
+          "ccn3": "598"
+        },
+        "region": "Oceania",
+        "subregion": "Melanesia",
+        "population": 8947024,
+        "flag": {
+          "emoji": "🇵🇬",
+          "url_png": "https://flagcdn.com/w320/pg.png",
+          "url_svg": "https://flagcdn.com/pg.svg"
+        }
+      }
+    ],
+    "meta": {
+      "total": 2,
+      "count": 2,
+      "limit": 25,
+      "offset": 0,
+      "more": false,
+      "request_id": "req_03jkl789mno012"
+    }
+  }
+}

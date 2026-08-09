@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/restcountries-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - query
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token authentication. Obtain your API key from https://restcountries.com.
+    A demo key `rc_live_demo` is available for testing.
+  sources:
+  - openapi/restcountries-openapi.yml
+- name: apiKeyQuery
+  type: apiKey
+  in: query
+  parameter: api-key
+  description: API key passed as a query parameter (less secure)
+  sources:
+  - openapi/restcountries-openapi.yml

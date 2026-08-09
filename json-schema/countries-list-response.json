@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.restcountries.com/schemas/countries-list-response.json",
+  "title": "CountriesListResponse",
+  "description": "Paginated list response envelope returned by all REST Countries API list and search endpoints",
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": ["objects", "meta"],
+      "properties": {
+        "objects": {
+          "type": "array",
+          "description": "Array of country records matching the request",
+          "items": {
+            "$ref": "country.json"
+          }
+        },
+        "meta": {
+          "type": "object",
+          "description": "Pagination metadata",
+          "required": ["total", "count", "limit", "offset", "more"],
+          "properties": {
+            "total": {
+              "type": "integer",
+              "description": "Total number of matched records",
+              "minimum": 0,
+              "examples": [249]
+            },
+            "count": {
+              "type": "integer",
+              "description": "Number of records returned in this response slice",
+              "minimum": 0,
+              "examples": [25]
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Records per page limit applied to this request",
+              "minimum": 1,
+              "maximum": 100,
+              "examples": [25]
+            },
+            "offset": {
+              "type": "integer",
+              "description": "Number of records skipped before this page",
+              "minimum": 0,
+              "examples": [0]
+            },
+            "more": {
+              "type": "boolean",
+              "description": "True if additional records exist beyond the current page"
+            },
+            "request_id": {
+              "type": "string",
+              "description": "Unique identifier for this API request"
+            }
+          }
+        }
+      }
+    }
+  }
+}
