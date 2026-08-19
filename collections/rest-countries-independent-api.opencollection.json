@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST Countries All Independent API",
+    "version": "3.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Independent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Independent Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/independent",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "When `true`, returns only independent countries. When `false`, returns only non-independent territories."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Filter countries by ISO 3166-1 independence status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

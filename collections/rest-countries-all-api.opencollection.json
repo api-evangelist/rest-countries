@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST Countries All API",
+    "version": "3.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "All",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/all",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Returns every country in the dataset. As of v3.1, the `fields` query parameter is required (up to 10 fields); requests without `fields` may return 400 Bad Request because the unfiltered payload is large."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

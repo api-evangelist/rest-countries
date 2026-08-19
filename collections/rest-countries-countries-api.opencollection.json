@@ -1,0 +1,238 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST Countries API",
+    "version": "v5"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Countries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restcountries.com/countries/v5/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (1–100, default 25)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Pretty-print JSON output"
+              },
+              {
+                "name": "response_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated allowlist of country fields to include in response"
+              },
+              {
+                "name": "response_fields_omit",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated blocklist of country fields to exclude from response"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search term across all searchable properties"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all countries. Supports filtering by any searchable property via query parameters.\n"
+        },
+        {
+          "info": {
+            "name": "Search within a named property aggregate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restcountries.com/countries/v5/:aggregate",
+            "params": [
+              {
+                "name": "aggregate",
+                "value": "",
+                "type": "path",
+                "description": "Property bundle to search within (`name` or `code`)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term to match within the aggregate properties"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (1–100, default 25)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Pretty-print JSON output"
+              },
+              {
+                "name": "response_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated allowlist of country fields to include in response"
+              },
+              {
+                "name": "response_fields_omit",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated blocklist of country fields to exclude from response"
+              }
+            ]
+          },
+          "docs": "Search within a predefined bundle of related properties. Use aggregate `name` to search across common/official/alternate/native names, or `code` to search across all country code fields (alpha_2, alpha_3, etc.).\n"
+        },
+        {
+          "info": {
+            "name": "Exact-match lookup by property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restcountries.com/countries/v5/:property/:value",
+            "params": [
+              {
+                "name": "property",
+                "value": "",
+                "type": "path",
+                "description": "Country property name to match against"
+              },
+              {
+                "name": "value",
+                "value": "",
+                "type": "path",
+                "description": "Exact value to match for the given property"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (1–100, default 25)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Pretty-print JSON output"
+              },
+              {
+                "name": "response_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated allowlist of country fields to include in response"
+              },
+              {
+                "name": "response_fields_omit",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated blocklist of country fields to exclude from response"
+              }
+            ]
+          },
+          "docs": "Returns countries where the specified property exactly matches the given value. For example, `/alpha_2/US` returns the United States.\n"
+        },
+        {
+          "info": {
+            "name": "Substring search within a single property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.restcountries.com/countries/v5/:property",
+            "params": [
+              {
+                "name": "property",
+                "value": "",
+                "type": "path",
+                "description": "Country property name to search within"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term for substring matching within the property"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page (1–100, default 25)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (default 0)"
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Pretty-print JSON output"
+              },
+              {
+                "name": "response_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated allowlist of country fields to include in response"
+              },
+              {
+                "name": "response_fields_omit",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated blocklist of country fields to exclude from response"
+              }
+            ]
+          },
+          "docs": "Performs a substring/partial match search within the specified property. Requires the `q` query parameter.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST Countries All Capital API",
+    "version": "3.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Capital",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Capital",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/capital/:capital",
+            "params": [
+              {
+                "name": "capital",
+                "value": "",
+                "type": "path",
+                "description": "Capital city name."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Search countries by their capital city."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

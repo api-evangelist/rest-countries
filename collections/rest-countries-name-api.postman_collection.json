@@ -1,0 +1,195 @@
+{
+  "item": [
+    {
+      "id": "0dc5f810-1b32-42a8-9697-7d54b3328e4c",
+      "name": "Name",
+      "description": {
+        "content": "Lookup countries by common or official name.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "737ea776-61b0-4d4e-9ef0-512cb67ed0a2",
+          "name": "Get Countries By Name",
+          "request": {
+            "name": "Get Countries By Name",
+            "description": {
+              "content": "Search countries by common or official name. Partial, case-insensitive substring matches are returned by default. Set `fullText=true` to require an exact full-name match.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "name",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fullText",
+                  "value": "false",
+                  "description": "When `true`, only an exact full-name match is returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Common or official country name (URL-encoded)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc7a8764-1e90-472d-b8eb-eef2cc596525",
+              "name": "A list of countries whose name matches the query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "name",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fullText",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "name,capital,region,flags"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Common or official country name (URL-encoded)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": {\n      \"common\": \"string\",\n      \"official\": \"string\",\n      \"nativeName\": {\n        \"key_0\": {\n          \"official\": \"string\",\n          \"common\": \"string\"\n        },\n        \"key_1\": {\n          \"official\": \"string\",\n          \"common\": \"string\"\n        },\n        \"key_2\": {\n          \"official\": \"string\",\n          \"common\": \"string\"\n        },\n        \"key_3\": {\n          \"official\": \"string\",\n          \"common\": \"string\"\n        }\n      }\n    },\n    \"tld\": [\n      \"string\",\n      \"string\"\n    ],\n    \"cca2\": \"st\",\n    \"ccn3\": \"string\",\n    \"cca3\": \"str\",\n    \"cioc\": \"string\",\n    \"independent\": false,\n    \"status\": \"string\",\n    \"unMember\": false,\n    \"currencies\": {\n      \"key_0\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"key_1\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"key_2\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"idd\": {\n      \"root\": \"string\",\n      \"suffixes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"capital\": [\n      \"string\",\n      \"string\"\n    ],\n    \"altSpellings\": [\n      \"string\",\n      \"string\"\n    ],\n    \"region\": \"string\",\n    \"subregion\": \"string\",\n    \"languages\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"translations\": {\n      \"key_0\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      }\n    },\n    \"latlng\": [\n      4234.561358361755,\n      4730.093943414874\n    ],\n    \"landlocked\": false,\n    \"borders\": [\n      \"string\",\n      \"string\"\n    ],\n    \"area\": 6545.297810411006,\n    \"demonyms\": {\n      \"key_0\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      },\n      \"key_1\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      },\n      \"key_2\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      },\n      \"key_3\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      }\n    },\n    \"flag\": \"string\",\n    \"maps\": {\n      \"googleMaps\": \"https://vxeUlrtooVZPgvrXYgOaUn.roeeiT8E89NvJdBrAPB5tFqVEIamkBhrndhrga-D1AJWtfcknfgkZUQ\",\n      \"openStreetMaps\": \"https://npKfwCbIcTAY.wvfuUSKigT-Mtbd,KO\"\n    },\n    \"population\": 8067,\n    \"gini\": {\n      \"key_0\": 6963.570279436434,\n      \"key_1\": 1048.8636318272704,\n      \"key_2\": 9725.125816196223\n    },\n    \"fifa\": \"string\",\n    \"car\": {\n      \"signs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"side\": \"left\"\n    },\n    \"timezones\": [\n      \"string\",\n      \"string\"\n    ],\n    \"continents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"flags\": {\n      \"png\": \"https://MFxuuEfITnZVzgOOoSlpEvq.eecZlc77POOuWwRaOn-65lGYCgwg7z\",\n      \"svg\": \"https://CNpEImZuUIQtjOEGGkNH.goSKBYI.0hgKBeJqaibV1X3F3JkkBzYjcjZ92pFBeUeOX\",\n      \"alt\": \"string\"\n    },\n    \"coatOfArms\": {\n      \"png\": \"http://NZFgrVcaGoshrAQOzyDtqwYpC.clKLWrg5bhWMs+8UywAYIT\",\n      \"svg\": \"https://IioSQVLi.jvbcmnKKEAjoJdyxQlzlP-ju9vF6kEJ5FYWEMuJerH\"\n    },\n    \"startOfWeek\": \"sunday\",\n    \"capitalInfo\": {\n      \"latlng\": [\n        6184.728612053199,\n        7007.4673857994185\n      ]\n    },\n    \"postalCode\": {\n      \"format\": \"string\",\n      \"regex\": \"string\"\n    }\n  },\n  {\n    \"name\": {\n      \"common\": \"string\",\n      \"official\": \"string\",\n      \"nativeName\": {\n        \"key_0\": {\n          \"official\": \"string\",\n          \"common\": \"string\"\n        }\n      }\n    },\n    \"tld\": [\n      \"string\",\n      \"string\"\n    ],\n    \"cca2\": \"st\",\n    \"ccn3\": \"string\",\n    \"cca3\": \"str\",\n    \"cioc\": \"string\",\n    \"independent\": true,\n    \"status\": \"string\",\n    \"unMember\": true,\n    \"currencies\": {\n      \"key_0\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"key_1\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"key_2\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"idd\": {\n      \"root\": \"string\",\n      \"suffixes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"capital\": [\n      \"string\",\n      \"string\"\n    ],\n    \"altSpellings\": [\n      \"string\",\n      \"string\"\n    ],\n    \"region\": \"string\",\n    \"subregion\": \"string\",\n    \"languages\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"translations\": {\n      \"key_0\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      },\n      \"key_1\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      },\n      \"key_2\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      },\n      \"key_3\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      }\n    },\n    \"latlng\": [\n      6210.8629629024545,\n      5421.027136965649\n    ],\n    \"landlocked\": false,\n    \"borders\": [\n      \"string\",\n      \"string\"\n    ],\n    \"area\": 1040.4405564532938,\n    \"demonyms\": {\n      \"key_0\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      },\n      \"key_1\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      }\n    },\n    \"flag\": \"string\",\n    \"maps\": {\n      \"googleMaps\": \"http://YSJKArPOyGN.sokUdT7QftfyOzBLA1HP\",\n      \"openStreetMaps\": \"https://SkxIaopalrQP.dbVmm9xngTHNixdZeFGMLvTpot0FbU9jbno\"\n    },\n    \"population\": 6046,\n    \"gini\": {\n      \"key_0\": 6448.86411537828\n    },\n    \"fifa\": \"string\",\n    \"car\": {\n      \"signs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"side\": \"right\"\n    },\n    \"timezones\": [\n      \"string\",\n      \"string\"\n    ],\n    \"continents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"flags\": {\n      \"png\": \"https://PHAvHBUSoZf.eznhMpPg,H,a1h3NxO,CUww44bqZQXO7zvHpXzzR+J7ijN3S292C\",\n      \"svg\": \"http://wwmkerbOdqxdLCAAwNspTiBKjMgxc.qvbdZ2Hj-NGSxkN.Ltu-7VMtNel8MowzzkPTKd2JwAopnz7gRcf7UgThxVnHI80n5a5U\",\n      \"alt\": \"string\"\n    },\n    \"coatOfArms\": {\n      \"png\": \"https://gITeEUKitdjgKpBaxDvwFnyhtacRYOv.vsdOXq-Yucd.2w+MOmS9MVbh+8-VZH3vOXPDJ0U6\",\n      \"svg\": \"http://zMaaxHEpoiWK.gpJv2ekc9RL8.CuSR.OI4vBaQC,c9TNzIg2mlfnSzlLEywvfnq\"\n    },\n    \"startOfWeek\": \"sunday\",\n    \"capitalInfo\": {\n      \"latlng\": [\n        997.0161846535352,\n        510.10953332613406\n      ]\n    },\n    \"postalCode\": {\n      \"format\": \"string\",\n      \"regex\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34e2a7d7-e081-4146-bd29-758d70e21117",
+              "name": "No country matched the query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "name",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fullText",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "name,capital,region,flags"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Common or official country name (URL-encoded)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 1794,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://restcountries.com/v3.1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "46d95b19-4942-4597-8706-80b80f2a36a1",
+    "name": "REST Countries All Name API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST Countries is a free, open-source RESTful API that returns information about world countries. Each country resource exposes ISO 3166-1 codes (cca2, cca3, ccn3, cioc), common and official names, native names, translations, capital cities, regions and subregions, continents, area, population, latitude and longitude, top level domains, calling codes, currencies, languages, timezones, demonyms, flags and coats of arms, postal code patterns, FIFA code, independence and UN membership status, regional bloc affiliations, driving side, Gini index, start of week, and links to map services. The API is read-only and unauthenticated; the canonical hosted version runs at restcountries.com and the source is maintained at github.com/apilayer/restcountries (community-run, MPL-2.0 licensed).\n\nContact Support:\n Name: REST Countries",
+      "type": "text/plain"
+    }
+  }
+}

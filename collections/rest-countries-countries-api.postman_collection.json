@@ -1,0 +1,2087 @@
+{
+  "item": [
+    {
+      "id": "e1960def-9917-41a9-b9fa-294e08c7fcf5",
+      "name": "Countries",
+      "description": {
+        "content": "Country lookup and search endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1904200e-263a-45bb-8b15-254cb6fe5762",
+          "name": "List all countries",
+          "request": {
+            "name": "List all countries",
+            "description": {
+              "content": "Returns a paginated list of all countries. Supports filtering by any searchable property via query parameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of records to return per page (1–100, default 25)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "false",
+                  "description": "Pretty-print JSON output"
+                },
+                {
+                  "disabled": false,
+                  "key": "response_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated allowlist of country fields to include in response"
+                },
+                {
+                  "disabled": false,
+                  "key": "response_fields_omit",
+                  "value": "<string>",
+                  "description": "Comma-separated blocklist of country fields to exclude from response"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free-text search term across all searchable properties"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2056d89-fe5d-4c9c-9487-e49fb9e1f849",
+              "name": "Successful country list or search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"objects\": [\n      {\n        \"names\": {\n          \"common\": \"United States\",\n          \"official\": \"United States of America\"\n        },\n        \"codes\": {\n          \"alpha_2\": \"US\",\n          \"alpha_3\": \"USA\",\n          \"ccn3\": \"840\"\n        },\n        \"region\": \"Americas\",\n        \"subregion\": \"Northern America\",\n        \"population\": 331000000,\n        \"flag\": {\n          \"emoji\": \"🇺🇸\",\n          \"url_png\": \"https://flagcdn.com/w320/us.png\"\n        }\n      }\n    ],\n    \"meta\": {\n      \"total\": 249,\n      \"count\": 1,\n      \"limit\": 25,\n      \"offset\": 0,\n      \"more\": false,\n      \"request_id\": \"req_01abc123def456\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58bb0ebc-7f01-47fa-994d-e0c9746a3fc6",
+              "name": "Malformed request (e.g., empty search term, invalid parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"q parameter is required and cannot be empty\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "893bfd28-7977-40d2-94f5-446cbd33dd6b",
+              "name": "Missing, invalid, revoked, or expired API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Authorization key required.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ac9d403-aa62-48e0-ac97-6aa9253ca6b5",
+              "name": "Account frozen due to quota exceeded, or premium field accessed on free plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Access to premium fields requires a paid plan.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b28c06e-6bb4-4f6c-acc2-a926e20c33d4",
+              "name": "Server-side error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Internal server error.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bfade71-cfed-427c-bc93-9619ef66ac68",
+          "name": "Search within a named property aggregate",
+          "request": {
+            "name": "Search within a named property aggregate",
+            "description": {
+              "content": "Search within a predefined bundle of related properties. Use aggregate `name` to search across common/official/alternate/native names, or `code` to search across all country code fields (alpha_2, alpha_3, etc.).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":aggregate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search term to match within the aggregate properties"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of records to return per page (1–100, default 25)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "false",
+                  "description": "Pretty-print JSON output"
+                },
+                {
+                  "disabled": false,
+                  "key": "response_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated allowlist of country fields to include in response"
+                },
+                {
+                  "disabled": false,
+                  "key": "response_fields_omit",
+                  "value": "<string>",
+                  "description": "Comma-separated blocklist of country fields to exclude from response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "aggregate",
+                  "description": "(Required) Property bundle to search within (`name` or `code`)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd0cce50-88fe-4bee-98a8-a2c6817cbf04",
+              "name": "Successful country list or search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":aggregate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "aggregate",
+                      "description": "(Required) Property bundle to search within (`name` or `code`)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"objects\": [\n      {\n        \"names\": {\n          \"common\": \"United States\",\n          \"official\": \"United States of America\"\n        },\n        \"codes\": {\n          \"alpha_2\": \"US\",\n          \"alpha_3\": \"USA\",\n          \"ccn3\": \"840\"\n        },\n        \"region\": \"Americas\",\n        \"subregion\": \"Northern America\",\n        \"population\": 331000000,\n        \"flag\": {\n          \"emoji\": \"🇺🇸\",\n          \"url_png\": \"https://flagcdn.com/w320/us.png\"\n        }\n      }\n    ],\n    \"meta\": {\n      \"total\": 249,\n      \"count\": 1,\n      \"limit\": 25,\n      \"offset\": 0,\n      \"more\": false,\n      \"request_id\": \"req_01abc123def456\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5edb6f7-0bf7-4371-9f88-95cc4e6c1e50",
+              "name": "Malformed request (e.g., empty search term, invalid parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":aggregate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "aggregate",
+                      "description": "(Required) Property bundle to search within (`name` or `code`)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"q parameter is required and cannot be empty\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "653fb8c0-a203-40d7-ad8e-fe7446e50536",
+              "name": "Missing, invalid, revoked, or expired API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":aggregate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "aggregate",
+                      "description": "(Required) Property bundle to search within (`name` or `code`)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Authorization key required.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f3a2bd6-4e95-44bb-85ba-8e3be4bdf5c3",
+              "name": "Account frozen due to quota exceeded, or premium field accessed on free plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":aggregate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "aggregate",
+                      "description": "(Required) Property bundle to search within (`name` or `code`)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Access to premium fields requires a paid plan.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8127e12f-7260-4bf4-b8e1-0eec49dadb7f",
+              "name": "Unknown path, property, or aggregate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":aggregate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "aggregate",
+                      "description": "(Required) Property bundle to search within (`name` or `code`)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Unknown property or aggregate.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ca1cb7a-7c39-4e72-94ec-3a331290a803",
+              "name": "Server-side error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":aggregate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "aggregate",
+                      "description": "(Required) Property bundle to search within (`name` or `code`)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Internal server error.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de93f44d-bb2e-4c18-b1bc-2ece49f8c2d5",
+          "name": "Exact-match lookup by property value",
+          "request": {
+            "name": "Exact-match lookup by property value",
+            "description": {
+              "content": "Returns countries where the specified property exactly matches the given value. For example, `/alpha_2/US` returns the United States.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":property",
+                ":value"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of records to return per page (1–100, default 25)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "false",
+                  "description": "Pretty-print JSON output"
+                },
+                {
+                  "disabled": false,
+                  "key": "response_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated allowlist of country fields to include in response"
+                },
+                {
+                  "disabled": false,
+                  "key": "response_fields_omit",
+                  "value": "<string>",
+                  "description": "Comma-separated blocklist of country fields to exclude from response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "property",
+                  "description": "(Required) Country property name to match against"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "value",
+                  "description": "(Required) Exact value to match for the given property"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41543987-2fb6-4d81-a170-a942881d1092",
+              "name": "Successful country list or search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to match against"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) Exact value to match for the given property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"objects\": [\n      {\n        \"names\": {\n          \"common\": \"United States\",\n          \"official\": \"United States of America\"\n        },\n        \"codes\": {\n          \"alpha_2\": \"US\",\n          \"alpha_3\": \"USA\",\n          \"ccn3\": \"840\"\n        },\n        \"region\": \"Americas\",\n        \"subregion\": \"Northern America\",\n        \"population\": 331000000,\n        \"flag\": {\n          \"emoji\": \"🇺🇸\",\n          \"url_png\": \"https://flagcdn.com/w320/us.png\"\n        }\n      }\n    ],\n    \"meta\": {\n      \"total\": 249,\n      \"count\": 1,\n      \"limit\": 25,\n      \"offset\": 0,\n      \"more\": false,\n      \"request_id\": \"req_01abc123def456\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1fc6c62-daa6-4844-8c5d-68c37ff8fdab",
+              "name": "Malformed request (e.g., empty search term, invalid parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to match against"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) Exact value to match for the given property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"q parameter is required and cannot be empty\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bf945c1-90c4-4b8a-bfaf-be3a1ee3137a",
+              "name": "Missing, invalid, revoked, or expired API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to match against"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) Exact value to match for the given property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Authorization key required.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "646ddd4e-bc47-4aef-a29e-b08504910245",
+              "name": "Account frozen due to quota exceeded, or premium field accessed on free plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to match against"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) Exact value to match for the given property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Access to premium fields requires a paid plan.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "206a40bb-54d8-430a-b3a9-c48f2fdcc0fc",
+              "name": "Unknown path, property, or aggregate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to match against"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) Exact value to match for the given property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Unknown property or aggregate.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f94e94d-6f4d-4aa2-a801-dc0f8c47c760",
+              "name": "Server-side error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property",
+                    ":value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to match against"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "value",
+                      "description": "(Required) Exact value to match for the given property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Internal server error.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c793c8d-2945-48b2-b174-bd7363428bd1",
+          "name": "Substring search within a single property",
+          "request": {
+            "name": "Substring search within a single property",
+            "description": {
+              "content": "Performs a substring/partial match search within the specified property. Requires the `q` query parameter.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":property"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search term for substring matching within the property"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of records to return per page (1–100, default 25)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "false",
+                  "description": "Pretty-print JSON output"
+                },
+                {
+                  "disabled": false,
+                  "key": "response_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated allowlist of country fields to include in response"
+                },
+                {
+                  "disabled": false,
+                  "key": "response_fields_omit",
+                  "value": "<string>",
+                  "description": "Comma-separated blocklist of country fields to exclude from response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "property",
+                  "description": "(Required) Country property name to search within"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99a93b3c-08db-497e-96f8-b970a45e80ae",
+              "name": "Successful country list or search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to search within"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"objects\": [\n      {\n        \"names\": {\n          \"common\": \"United States\",\n          \"official\": \"United States of America\"\n        },\n        \"codes\": {\n          \"alpha_2\": \"US\",\n          \"alpha_3\": \"USA\",\n          \"ccn3\": \"840\"\n        },\n        \"region\": \"Americas\",\n        \"subregion\": \"Northern America\",\n        \"population\": 331000000,\n        \"flag\": {\n          \"emoji\": \"🇺🇸\",\n          \"url_png\": \"https://flagcdn.com/w320/us.png\"\n        }\n      }\n    ],\n    \"meta\": {\n      \"total\": 249,\n      \"count\": 1,\n      \"limit\": 25,\n      \"offset\": 0,\n      \"more\": false,\n      \"request_id\": \"req_01abc123def456\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51b89828-dca3-4254-a8f3-3ce3986aa147",
+              "name": "Malformed request (e.g., empty search term, invalid parameters)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to search within"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"q parameter is required and cannot be empty\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3dd9a4a5-1a14-451d-8c4f-172d7413ba5f",
+              "name": "Missing, invalid, revoked, or expired API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to search within"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Authorization key required.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e252b7c5-6a89-4e72-a4bb-f970de31c3c4",
+              "name": "Account frozen due to quota exceeded, or premium field accessed on free plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to search within"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Access to premium fields requires a paid plan.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cc23a8b-5736-418f-a997-2e7ce6ddb8f6",
+              "name": "Unknown path, property, or aggregate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to search within"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Unknown property or aggregate.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8facdf81-7a02-46b1-9c7c-24bc6b62c62d",
+              "name": "Server-side error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":property"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "false"
+                    },
+                    {
+                      "key": "response_fields",
+                      "value": "names.common,codes.alpha_2,flag.emoji"
+                    },
+                    {
+                      "key": "response_fields_omit",
+                      "value": "leaders,economy"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "property",
+                      "description": "(Required) Country property name to search within"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"Internal server error.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.restcountries.com/countries/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d9753852-2c98-4236-8f37-e28ef4a92a45",
+    "name": "REST Countries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Free REST API providing comprehensive data about world countries including name, capital, currencies, languages, flags, population, and geographic information. Covers 250+ countries and dependencies with 80+ fields per country, updated from 35+ authoritative sources.\n",
+      "type": "text/plain"
+    }
+  }
+}

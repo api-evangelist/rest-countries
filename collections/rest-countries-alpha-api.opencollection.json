@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST Countries All Alpha API",
+    "version": "3.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alpha",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Country By Alpha Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/alpha/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "path",
+                "description": "ISO 3166-1 alpha-2, alpha-3, numeric, or CIOC code."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Lookup a country by ISO 3166-1 alpha-2 (cca2), alpha-3 (cca3), numeric (ccn3), or International Olympic Committee (cioc) code."
+        },
+        {
+          "info": {
+            "name": "Get Countries By Multiple Alpha Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/alpha",
+            "params": [
+              {
+                "name": "codes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 3166-1 codes (alpha-2, alpha-3, numeric, or CIOC)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Batch lookup of countries by a comma-separated list of alpha codes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST Countries All Name API",
+    "version": "3.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Name",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries By Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://restcountries.com/v3.1/name/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Common or official country name (URL-encoded)."
+              },
+              {
+                "name": "fullText",
+                "value": "",
+                "type": "query",
+                "description": "When `true`, only an exact full-name match is returned."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+              }
+            ]
+          },
+          "docs": "Search countries by common or official name. Partial, case-insensitive substring matches are returned by default. Set `fullText=true` to require an exact full-name match."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

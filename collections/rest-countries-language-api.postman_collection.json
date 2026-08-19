@@ -1,0 +1,181 @@
+{
+  "item": [
+    {
+      "id": "c28bdcd5-bde3-4326-a4b2-6b83f58d336a",
+      "name": "Language",
+      "description": {
+        "content": "Lookup countries by ISO 639 language code or language name.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c4419e0-7daa-4539-8962-2f55ad4827c9",
+          "name": "Get Countries By Language",
+          "request": {
+            "name": "Get Countries By Language",
+            "description": {
+              "content": "Search countries by ISO 639 language code or language name (e.g. `spanish`, `cym`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lang",
+                ":language"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) ISO 639 language code or language name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "632a4ce2-45fa-4b8d-bc61-9635f0a85b23",
+              "name": "A list of countries that use the requested language.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lang",
+                    ":language"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "name,capital,region,flags"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) ISO 639 language code or language name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": {\n      \"common\": \"string\",\n      \"official\": \"string\",\n      \"nativeName\": {\n        \"key_0\": {\n          \"official\": \"string\",\n          \"common\": \"string\"\n        }\n      }\n    },\n    \"tld\": [\n      \"string\",\n      \"string\"\n    ],\n    \"cca2\": \"st\",\n    \"ccn3\": \"string\",\n    \"cca3\": \"str\",\n    \"cioc\": \"string\",\n    \"independent\": true,\n    \"status\": \"string\",\n    \"unMember\": true,\n    \"currencies\": {\n      \"key_0\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"key_1\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"idd\": {\n      \"root\": \"string\",\n      \"suffixes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"capital\": [\n      \"string\",\n      \"string\"\n    ],\n    \"altSpellings\": [\n      \"string\",\n      \"string\"\n    ],\n    \"region\": \"string\",\n    \"subregion\": \"string\",\n    \"languages\": {\n      \"key_0\": \"string\"\n    },\n    \"translations\": {\n      \"key_0\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      },\n      \"key_1\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      },\n      \"key_2\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      }\n    },\n    \"latlng\": [\n      9491.659078083567,\n      700.4190467927041\n    ],\n    \"landlocked\": true,\n    \"borders\": [\n      \"string\",\n      \"string\"\n    ],\n    \"area\": 7397.540621757315,\n    \"demonyms\": {\n      \"key_0\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      },\n      \"key_1\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      },\n      \"key_2\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      },\n      \"key_3\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      }\n    },\n    \"flag\": \"string\",\n    \"maps\": {\n      \"googleMaps\": \"http://uvCfzYpuzUoRR.lqmLTzC-0CZEHGShAvs1BYZ6sRyM6AZt-xsoWFwSJxwf-eh\",\n      \"openStreetMaps\": \"https://bLjAGWqQTcOUrIXVoO.gqiEGZs7xi5MAh\"\n    },\n    \"population\": 8161,\n    \"gini\": {\n      \"key_0\": 159.409096338915\n    },\n    \"fifa\": \"string\",\n    \"car\": {\n      \"signs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"side\": \"right\"\n    },\n    \"timezones\": [\n      \"string\",\n      \"string\"\n    ],\n    \"continents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"flags\": {\n      \"png\": \"http://EjCmIhjlqTlXcZjzqGHNTNkpw.gjzh\",\n      \"svg\": \"https://zyGCUeGcwPlUmSVCFhl.zwmrKQUi,jNAoDJc6udD1IejyYQhN84PhcIqcOxR.wtaLjbd0N4n5S.f5yhmeRUl-kyG\",\n      \"alt\": \"string\"\n    },\n    \"coatOfArms\": {\n      \"png\": \"https://xSQkPWn.spfgeeYWzetBDjJA7IGU\",\n      \"svg\": \"http://gWJe.dyoMVLs-xlVvMqy2lmKcp9NGJ3v,CjqMTfT5g.\"\n    },\n    \"startOfWeek\": \"monday\",\n    \"capitalInfo\": {\n      \"latlng\": [\n        3255.930231205526,\n        2801.8086872032\n      ]\n    },\n    \"postalCode\": {\n      \"format\": \"string\",\n      \"regex\": \"string\"\n    }\n  },\n  {\n    \"name\": {\n      \"common\": \"string\",\n      \"official\": \"string\",\n      \"nativeName\": {\n        \"key_0\": {\n          \"official\": \"string\",\n          \"common\": \"string\"\n        },\n        \"key_1\": {\n          \"official\": \"string\",\n          \"common\": \"string\"\n        }\n      }\n    },\n    \"tld\": [\n      \"string\",\n      \"string\"\n    ],\n    \"cca2\": \"st\",\n    \"ccn3\": \"string\",\n    \"cca3\": \"str\",\n    \"cioc\": \"string\",\n    \"independent\": false,\n    \"status\": \"string\",\n    \"unMember\": true,\n    \"currencies\": {\n      \"key_0\": {\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      }\n    },\n    \"idd\": {\n      \"root\": \"string\",\n      \"suffixes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"capital\": [\n      \"string\",\n      \"string\"\n    ],\n    \"altSpellings\": [\n      \"string\",\n      \"string\"\n    ],\n    \"region\": \"string\",\n    \"subregion\": \"string\",\n    \"languages\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"translations\": {\n      \"key_0\": {\n        \"official\": \"string\",\n        \"common\": \"string\"\n      }\n    },\n    \"latlng\": [\n      5837.690767058745,\n      4923.6144881755035\n    ],\n    \"landlocked\": false,\n    \"borders\": [\n      \"string\",\n      \"string\"\n    ],\n    \"area\": 6107.16536913889,\n    \"demonyms\": {\n      \"key_0\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      },\n      \"key_1\": {\n        \"f\": \"string\",\n        \"m\": \"string\"\n      }\n    },\n    \"flag\": \"string\",\n    \"maps\": {\n      \"googleMaps\": \"http://IKBIaEHiLfwtJkbWslBXVuw.zddJiC7msAb.cBkDdevMG3Vk,QiR0jhCF8PpFF,1tCn24m9ArqxdaRJU.PuP01EvLT-wNqzabs1NDbkU\",\n      \"openStreetMaps\": \"http://Ha.yiwQTU0qKnrlcUVBZ1aSEHtXQ2Z,qMCHcUPTN9gh9VU,qy9X7uU4j8D\"\n    },\n    \"population\": 8829,\n    \"gini\": {\n      \"key_0\": 9992.236759469271\n    },\n    \"fifa\": \"string\",\n    \"car\": {\n      \"signs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"side\": \"right\"\n    },\n    \"timezones\": [\n      \"string\",\n      \"string\"\n    ],\n    \"continents\": [\n      \"string\",\n      \"string\"\n    ],\n    \"flags\": {\n      \"png\": \"https://ZltPLCtka.qssrF,adA,ljn7+\",\n      \"svg\": \"http://kJhZpVjM.vmT-+-dBIbL\",\n      \"alt\": \"string\"\n    },\n    \"coatOfArms\": {\n      \"png\": \"http://OuXsNfSGzHYGXfxsbsEHyWoIk.oqbsULTKinbxnZSkZnlISzyVxvoIDnCnKXP9rgmidlP-wwRmYU1Z.BdKSAFkpC7lvG0T\",\n      \"svg\": \"https://eV.uanqaPtDRoVVB4BnJ34Bh9NorMDX0efbDa5cyW2ULreGobxaKPrYeMwKyxbQyALIB\"\n    },\n    \"startOfWeek\": \"monday\",\n    \"capitalInfo\": {\n      \"latlng\": [\n        6033.5724256281665,\n        2425.159957950779\n      ]\n    },\n    \"postalCode\": {\n      \"format\": \"string\",\n      \"regex\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56f19a08-e875-4120-a8c6-e5e1b7726b94",
+              "name": "No country matched the query.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lang",
+                    ":language"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "name,capital,region,flags"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) ISO 639 language code or language name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7856,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://restcountries.com/v3.1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "91af1704-cbda-478a-a88b-d5517f813299",
+    "name": "REST Countries All Language API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST Countries is a free, open-source RESTful API that returns information about world countries. Each country resource exposes ISO 3166-1 codes (cca2, cca3, ccn3, cioc), common and official names, native names, translations, capital cities, regions and subregions, continents, area, population, latitude and longitude, top level domains, calling codes, currencies, languages, timezones, demonyms, flags and coats of arms, postal code patterns, FIFA code, independence and UN membership status, regional bloc affiliations, driving side, Gini index, start of week, and links to map services. The API is read-only and unauthenticated; the canonical hosted version runs at restcountries.com and the source is maintained at github.com/apilayer/restcountries (community-run, MPL-2.0 licensed).\n\nContact Support:\n Name: REST Countries",
+      "type": "text/plain"
+    }
+  }
+}
