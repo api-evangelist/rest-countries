@@ -388,6 +388,16 @@ apis:
     url: plans/rest-countries-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/rest-countries-rate-limits.yml
+- aid: rest-countries:rest-countries-countries-api
+  name: REST Countries Countries API
+  description: Country lookup and search endpoints
+  humanURL: https://restcountries.com
+  baseURL: https://restcountries.com/v3.1
+  tags:
+  - Countries
+  properties:
+  - type: OpenAPI
+    url: openapi/rest-countries-countries-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/rest-countries-agentic-access.yml
