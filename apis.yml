@@ -38,7 +38,7 @@ accessModel:
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/rest-countries.png
 type: Index
 access: Public
-position: Provider
+position: Producing
 tags:
 - Countries
 - Geocoding
