@@ -68,7 +68,7 @@ tags_raw:
 - Subregions
 - Translations
 created: '2026-05-28'
-modified: '2026-08-08'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: rest-countries:rest-countries-all-api
@@ -402,7 +402,7 @@ apis:
   - type: RateLimits
     url: rate-limits/rest-countries-rate-limits.yml
 - aid: rest-countries:rest-countries-countries-api
-  name: REST Countries Countries API
+  name: REST Countries API
   description: Country lookup and search endpoints
   humanURL: https://restcountries.com
   baseURL: https://restcountries.com/v3.1
