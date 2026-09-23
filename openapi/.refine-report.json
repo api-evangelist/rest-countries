@@ -1,17 +1,8 @@
 {
   "provider": "rest-countries",
   "sources": [
-    "rest-countries-all-api-openapi.yml",
-    "rest-countries-alpha-api-openapi.yml",
-    "rest-countries-capital-api-openapi.yml",
-    "rest-countries-currency-api-openapi.yml",
-    "rest-countries-demonym-api-openapi.yml",
-    "rest-countries-independent-api-openapi.yml",
-    "rest-countries-language-api-openapi.yml",
-    "rest-countries-name-api-openapi.yml",
-    "rest-countries-region-api-openapi.yml",
-    "rest-countries-subregion-api-openapi.yml",
-    "rest-countries-translation-api-openapi.yml"
+    "_original/rest-countries-openapi.yml",
+    "rest-countries-countries-api-openapi.yml"
   ],
   "outputs": [
     "rest-countries-all-api-openapi.yml",
@@ -24,11 +15,30 @@
     "rest-countries-name-api-openapi.yml",
     "rest-countries-region-api-openapi.yml",
     "rest-countries-subregion-api-openapi.yml",
-    "rest-countries-translation-api-openapi.yml"
+    "rest-countries-translation-api-openapi.yml",
+    "rest-countries-countries-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "rest-countries-countries-api-openapi.yml: previously refined output kept for 4 operation(s) no archived document covers (e.g. / get, /{aggregate} get, /{property} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "rest-countries-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "rest-countries-all-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-alpha-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-capital-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-currency-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-demonym-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-independent-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-language-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-name-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-region-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-subregion-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rest-countries-translation-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

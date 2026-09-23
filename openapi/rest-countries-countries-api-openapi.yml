@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: REST Countries API
-  description: 'Free REST API providing comprehensive data about world countries including name, capital, currencies, languages, flags, population, and geographic information. Covers 250+ countries and dependencies with 80+ fields per country, updated from 35+ authoritative sources.
-
-    '
+  description: Free REST API providing comprehensive data about world countries including name, capital, currencies, languages, flags, population, and geographic information. Covers 250+ countries and dependencies with 80+ fields per country, updated from 35+ authoritative sources.
   version: v5
   contact:
     url: https://restcountries.com
@@ -25,9 +23,7 @@ paths:
     get:
       operationId: listCountries
       summary: List all countries
-      description: 'Returns a paginated list of all countries. Supports filtering by any searchable property via query parameters.
-
-        '
+      description: Returns a paginated list of all countries. Supports filtering by any searchable property via query parameters.
       tags:
       - Countries
       parameters:
@@ -57,9 +53,7 @@ paths:
     get:
       operationId: searchByAggregate
       summary: Search within a named property aggregate
-      description: 'Search within a predefined bundle of related properties. Use aggregate `name` to search across common/official/alternate/native names, or `code` to search across all country code fields (alpha_2, alpha_3, etc.).
-
-        '
+      description: Search within a predefined bundle of related properties. Use aggregate `name` to search across common/official/alternate/native names, or `code` to search across all country code fields (alpha_2, alpha_3, etc.).
       tags:
       - Countries
       parameters:
@@ -100,9 +94,7 @@ paths:
     get:
       operationId: lookupByProperty
       summary: Exact-match lookup by property value
-      description: 'Returns countries where the specified property exactly matches the given value. For example, `/alpha_2/US` returns the United States.
-
-        '
+      description: Returns countries where the specified property exactly matches the given value. For example, `/alpha_2/US` returns the United States.
       tags:
       - Countries
       parameters:
@@ -142,9 +134,7 @@ paths:
     get:
       operationId: searchByProperty
       summary: Substring search within a single property
-      description: 'Performs a substring/partial match search within the specified property. Requires the `q` query parameter.
-
-        '
+      description: Performs a substring/partial match search within the specified property. Requires the `q` query parameter.
       tags:
       - Countries
       parameters:
@@ -190,42 +180,6 @@ components:
           example:
             errors:
             - message: Access to premium fields requires a paid plan.
-    NotFound:
-      description: Unknown path, property, or aggregate
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            errors:
-            - message: Unknown property or aggregate.
-    Unauthorized:
-      description: Missing, invalid, revoked, or expired API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            errors:
-            - message: Authorization key required.
-    BadRequest:
-      description: Malformed request (e.g., empty search term, invalid parameters)
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            errors:
-            - message: q parameter is required and cannot be empty
-    InternalServerError:
-      description: Server-side error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            errors:
-            - message: Internal server error.
     CountriesListResponse:
       description: Successful country list or search response
       content:
@@ -255,7 +209,388 @@ components:
                 offset: 0
                 more: false
                 request_id: req_01abc123def456
+    Unauthorized:
+      description: Missing, invalid, revoked, or expired API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            errors:
+            - message: Authorization key required.
+    NotFound:
+      description: Unknown path, property, or aggregate
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            errors:
+            - message: Unknown property or aggregate.
+    BadRequest:
+      description: Malformed request (e.g., empty search term, invalid parameters)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            errors:
+            - message: q parameter is required and cannot be empty
+    InternalServerError:
+      description: Server-side error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            errors:
+            - message: Internal server error.
+  parameters:
+    response_fields:
+      name: response_fields
+      in: query
+      description: Comma-separated allowlist of country fields to include in response
+      required: false
+      schema:
+        type: string
+        example: names.common,codes.alpha_2,flag.emoji
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return per page (1–100, default 25)
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+    pretty:
+      name: pretty
+      in: query
+      description: Pretty-print JSON output
+      required: false
+      schema:
+        type: boolean
+        default: false
+    response_fields_omit:
+      name: response_fields_omit
+      in: query
+      description: Comma-separated blocklist of country fields to exclude from response
+      required: false
+      schema:
+        type: string
+        example: leaders,economy
+    offset:
+      name: offset
+      in: query
+      description: Number of records to skip for pagination (default 0)
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
   schemas:
+    CountryCoordinates:
+      type: object
+      description: Geographic center coordinates
+      properties:
+        lat:
+          type: number
+          description: Latitude of geographic center
+          example: 38.0
+        lng:
+          type: number
+          description: Longitude of geographic center
+          example: -97.0
+    Error:
+      type: object
+      description: API error response
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Human-readable error description
+                example: Authorization key required.
+    CountriesListEnvelope:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CountriesListData'
+    CountryNames:
+      type: object
+      description: Country name data in various forms and languages
+      properties:
+        common:
+          type: string
+          description: Common English name of the country
+          example: United States
+        official:
+          type: string
+          description: Official name of the country
+          example: United States of America
+        alternates:
+          type: array
+          description: Alternate names or spellings
+          items:
+            type: string
+        native:
+          type: object
+          description: Native names keyed by ISO 639-3 language code
+          additionalProperties:
+            type: object
+            properties:
+              common:
+                type: string
+              official:
+                type: string
+        translations:
+          type: object
+          description: Translated names keyed by language code
+          additionalProperties:
+            type: object
+            properties:
+              common:
+                type: string
+              official:
+                type: string
+    DateInfo:
+      type: object
+      description: Country-specific date and calendar conventions
+      properties:
+        start_of_week:
+          type: string
+          description: Conventional first day of the week
+          example: sunday
+        academic_year_start:
+          type: object
+          properties:
+            month:
+              type: integer
+              minimum: 1
+              maximum: 12
+            day:
+              type: integer
+              minimum: 1
+              maximum: 31
+        fiscal_year_start:
+          type: object
+          properties:
+            government:
+              type: object
+              properties:
+                month:
+                  type: integer
+                  minimum: 1
+                  maximum: 12
+                day:
+                  type: integer
+                  minimum: 1
+                  maximum: 31
+            corporate:
+              type: object
+              properties:
+                month:
+                  type: integer
+                  minimum: 1
+                  maximum: 12
+                day:
+                  type: integer
+                  minimum: 1
+                  maximum: 31
+                basis:
+                  type: string
+                  description: Basis for fiscal year (mandated, default, convention)
+            personal:
+              type: object
+              properties:
+                month:
+                  type: integer
+                  minimum: 1
+                  maximum: 12
+                day:
+                  type: integer
+                  minimum: 1
+                  maximum: 31
+    CountryCodes:
+      type: object
+      description: Standardized country identifier codes
+      properties:
+        alpha_2:
+          type: string
+          description: ISO 3166-1 alpha-2 two-letter country code
+          example: US
+          minLength: 2
+          maxLength: 2
+        alpha_3:
+          type: string
+          description: ISO 3166-1 alpha-3 three-letter country code
+          example: USA
+          minLength: 3
+          maxLength: 3
+        ccn3:
+          type: string
+          description: ISO 3166-1 numeric three-digit country code
+          example: '840'
+        fips:
+          type: string
+          description: FIPS country code
+        gec:
+          type: string
+          description: GEC Entities country code
+        cioc:
+          type: string
+          description: International Olympic Committee country code
+        fifa:
+          type: string
+          description: FIFA country code
+    Parent:
+      type: object
+      description: Sovereign parent country for dependencies
+      properties:
+        alpha_2:
+          type: string
+          description: ISO alpha-2 code of parent country
+        alpha_3:
+          type: string
+          description: ISO alpha-3 code of parent country
+    Links:
+      type: object
+      description: External reference links for the country
+      properties:
+        official:
+          type: string
+          format: uri
+          description: Official government website URL
+        wikipedia:
+          type: string
+          format: uri
+          description: Wikipedia article URL
+        open_street_maps:
+          type: string
+          format: uri
+          description: OpenStreetMap URL
+        google_maps:
+          type: string
+          format: uri
+          description: Google Maps URL
+    CountriesListData:
+      type: object
+      properties:
+        objects:
+          type: array
+          description: Array of country records
+          items:
+            $ref: '#/components/schemas/Country'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    Flag:
+      type: object
+      description: Flag representation in various formats
+      properties:
+        emoji:
+          type: string
+          description: Flag emoji character
+          example: 🇺🇸
+        unicode:
+          type: string
+          description: Unicode code points for flag emoji
+          example: U+1F1FA U+1F1F8
+        html_entity:
+          type: string
+          description: HTML numeric entity representation
+          example: '&#127482;&#127480;'
+        url_png:
+          type: string
+          format: uri
+          description: URL to PNG flag image
+          example: https://flagcdn.com/w320/us.png
+        url_svg:
+          type: string
+          format: uri
+          description: URL to SVG flag image
+          example: https://flagcdn.com/us.svg
+        description:
+          type: string
+          description: Accessibility text description of the flag
+    Cars:
+      type: object
+      description: Automobile-related country information
+      properties:
+        driving_side:
+          type: string
+          description: Side of the road vehicles drive on
+          enum:
+          - left
+          - right
+        signs:
+          type: array
+          description: International vehicle registration codes
+          items:
+            type: string
+          example:
+          - USA
+    Memberships:
+      type: object
+      description: International organization memberships
+      properties:
+        un:
+          type: boolean
+          description: United Nations member
+        eu:
+          type: boolean
+          description: European Union member
+        eurozone:
+          type: boolean
+          description: Euro currency user
+        schengen:
+          type: boolean
+          description: Schengen Area member
+        nato:
+          type: boolean
+          description: NATO member
+        commonwealth:
+          type: boolean
+          description: Commonwealth of Nations member
+        oecd:
+          type: boolean
+          description: OECD member
+        g7:
+          type: boolean
+          description: G7 member
+        g20:
+          type: boolean
+          description: G20 member
+        brics:
+          type: boolean
+          description: BRICS member
+        opec:
+          type: boolean
+          description: OPEC member
+        african_union:
+          type: boolean
+          description: African Union member
+        asean:
+          type: boolean
+          description: ASEAN member
+        arab_league:
+          type: boolean
+          description: Arab League member
+    PostalCode:
+      type: object
+      description: Postal code format information
+      properties:
+        format:
+          type: string
+          description: Postal code format mask (# = digit)
+          example: '#####-####'
+        regex:
+          type: string
+          description: Regular expression pattern for postal code validation
+          example: ^\d{5}(-\d{4})?$
     CountryArea:
       type: object
       description: Land area of the country
@@ -268,6 +603,50 @@ components:
           type: number
           description: Land area in square miles
           example: 3618783
+    Economy:
+      type: object
+      description: Economic data for the country
+      properties:
+        gini_coefficient:
+          type: object
+          description: Gini coefficient measurements keyed by year
+          additionalProperties:
+            type: number
+    NumberFormat:
+      type: object
+      description: Country-specific number formatting conventions
+      properties:
+        decimal_separator:
+          type: string
+          description: Character used as decimal separator
+          example: .
+        thousands_separator:
+          type: string
+          description: Character used as thousands grouping separator
+          example: ','
+    Capital:
+      type: object
+      description: Capital city information
+      properties:
+        name:
+          type: string
+          description: Name of the capital city
+          example: Washington D.C.
+        coordinates:
+          $ref: '#/components/schemas/CountryCoordinates'
+        primary:
+          type: boolean
+          description: Is this the primary capital?
+        constitutional:
+          type: boolean
+        administrative:
+          type: boolean
+        executive:
+          type: boolean
+        legislative:
+          type: boolean
+        judicial:
+          type: boolean
     Country:
       type: object
       description: Comprehensive country data record
@@ -402,330 +781,6 @@ components:
           $ref: '#/components/schemas/Economy'
         parent:
           $ref: '#/components/schemas/Parent'
-    NumberFormat:
-      type: object
-      description: Country-specific number formatting conventions
-      properties:
-        decimal_separator:
-          type: string
-          description: Character used as decimal separator
-          example: .
-        thousands_separator:
-          type: string
-          description: Character used as thousands grouping separator
-          example: ','
-    Currency:
-      type: object
-      description: Currency used in the country
-      properties:
-        name:
-          type: string
-          description: Full currency name
-          example: United States dollar
-        symbol:
-          type: string
-          description: Currency symbol
-          example: $
-    Memberships:
-      type: object
-      description: International organization memberships
-      properties:
-        un:
-          type: boolean
-          description: United Nations member
-        eu:
-          type: boolean
-          description: European Union member
-        eurozone:
-          type: boolean
-          description: Euro currency user
-        schengen:
-          type: boolean
-          description: Schengen Area member
-        nato:
-          type: boolean
-          description: NATO member
-        commonwealth:
-          type: boolean
-          description: Commonwealth of Nations member
-        oecd:
-          type: boolean
-          description: OECD member
-        g7:
-          type: boolean
-          description: G7 member
-        g20:
-          type: boolean
-          description: G20 member
-        brics:
-          type: boolean
-          description: BRICS member
-        opec:
-          type: boolean
-          description: OPEC member
-        african_union:
-          type: boolean
-          description: African Union member
-        asean:
-          type: boolean
-          description: ASEAN member
-        arab_league:
-          type: boolean
-          description: Arab League member
-    PostalCode:
-      type: object
-      description: Postal code format information
-      properties:
-        format:
-          type: string
-          description: Postal code format mask (# = digit)
-          example: '#####-####'
-        regex:
-          type: string
-          description: Regular expression pattern for postal code validation
-          example: ^\d{5}(-\d{4})?$
-    Meta:
-      type: object
-      description: Pagination metadata
-      properties:
-        total:
-          type: integer
-          description: Total number of matched records
-          example: 249
-        count:
-          type: integer
-          description: Number of records returned in this response
-          example: 25
-        limit:
-          type: integer
-          description: Records per page limit used for this request
-          example: 25
-        offset:
-          type: integer
-          description: Number of records skipped
-          example: 0
-        more:
-          type: boolean
-          description: True if additional records exist beyond this page
-          example: true
-        request_id:
-          type: string
-          description: Unique identifier for this request
-          example: req_01abc123def456
-    CountryCodes:
-      type: object
-      description: Standardized country identifier codes
-      properties:
-        alpha_2:
-          type: string
-          description: ISO 3166-1 alpha-2 two-letter country code
-          example: US
-          minLength: 2
-          maxLength: 2
-        alpha_3:
-          type: string
-          description: ISO 3166-1 alpha-3 three-letter country code
-          example: USA
-          minLength: 3
-          maxLength: 3
-        ccn3:
-          type: string
-          description: ISO 3166-1 numeric three-digit country code
-          example: '840'
-        fips:
-          type: string
-          description: FIPS country code
-        gec:
-          type: string
-          description: GEC Entities country code
-        cioc:
-          type: string
-          description: International Olympic Committee country code
-        fifa:
-          type: string
-          description: FIFA country code
-    Language:
-      type: object
-      description: Language spoken in the country
-      properties:
-        name:
-          type: string
-          description: English name of the language
-        native:
-          type: string
-          description: Native name of the language
-        iso_code:
-          type: string
-          description: ISO 639 language code
-    DateInfo:
-      type: object
-      description: Country-specific date and calendar conventions
-      properties:
-        start_of_week:
-          type: string
-          description: Conventional first day of the week
-          example: sunday
-        academic_year_start:
-          type: object
-          properties:
-            month:
-              type: integer
-              minimum: 1
-              maximum: 12
-            day:
-              type: integer
-              minimum: 1
-              maximum: 31
-        fiscal_year_start:
-          type: object
-          properties:
-            government:
-              type: object
-              properties:
-                month:
-                  type: integer
-                  minimum: 1
-                  maximum: 12
-                day:
-                  type: integer
-                  minimum: 1
-                  maximum: 31
-            corporate:
-              type: object
-              properties:
-                month:
-                  type: integer
-                  minimum: 1
-                  maximum: 12
-                day:
-                  type: integer
-                  minimum: 1
-                  maximum: 31
-                basis:
-                  type: string
-                  description: Basis for fiscal year (mandated, default, convention)
-            personal:
-              type: object
-              properties:
-                month:
-                  type: integer
-                  minimum: 1
-                  maximum: 12
-                day:
-                  type: integer
-                  minimum: 1
-                  maximum: 31
-    Flag:
-      type: object
-      description: Flag representation in various formats
-      properties:
-        emoji:
-          type: string
-          description: Flag emoji character
-          example: 🇺🇸
-        unicode:
-          type: string
-          description: Unicode code points for flag emoji
-          example: U+1F1FA U+1F1F8
-        html_entity:
-          type: string
-          description: HTML numeric entity representation
-          example: '&#127482;&#127480;'
-        url_png:
-          type: string
-          format: uri
-          description: URL to PNG flag image
-          example: https://flagcdn.com/w320/us.png
-        url_svg:
-          type: string
-          format: uri
-          description: URL to SVG flag image
-          example: https://flagcdn.com/us.svg
-        description:
-          type: string
-          description: Accessibility text description of the flag
-    CountryNames:
-      type: object
-      description: Country name data in various forms and languages
-      properties:
-        common:
-          type: string
-          description: Common English name of the country
-          example: United States
-        official:
-          type: string
-          description: Official name of the country
-          example: United States of America
-        alternates:
-          type: array
-          description: Alternate names or spellings
-          items:
-            type: string
-        native:
-          type: object
-          description: Native names keyed by ISO 639-3 language code
-          additionalProperties:
-            type: object
-            properties:
-              common:
-                type: string
-              official:
-                type: string
-        translations:
-          type: object
-          description: Translated names keyed by language code
-          additionalProperties:
-            type: object
-            properties:
-              common:
-                type: string
-              official:
-                type: string
-    Capital:
-      type: object
-      description: Capital city information
-      properties:
-        name:
-          type: string
-          description: Name of the capital city
-          example: Washington D.C.
-        coordinates:
-          $ref: '#/components/schemas/CountryCoordinates'
-        primary:
-          type: boolean
-          description: Is this the primary capital?
-        constitutional:
-          type: boolean
-        administrative:
-          type: boolean
-        executive:
-          type: boolean
-        legislative:
-          type: boolean
-        judicial:
-          type: boolean
-    Error:
-      type: object
-      description: API error response
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-                description: Human-readable error description
-                example: Authorization key required.
-    Economy:
-      type: object
-      description: Economic data for the country
-      properties:
-        gini_coefficient:
-          type: object
-          description: Gini coefficient measurements keyed by year
-          additionalProperties:
-            type: number
     Classification:
       type: object
       description: Political and international classification of the country
@@ -755,124 +810,59 @@ components:
           enum:
           - official
           - user_assigned
-    CountriesListEnvelope:
+    Currency:
       type: object
+      description: Currency used in the country
       properties:
-        data:
-          $ref: '#/components/schemas/CountriesListData'
-    CountriesListData:
+        name:
+          type: string
+          description: Full currency name
+          example: United States dollar
+        symbol:
+          type: string
+          description: Currency symbol
+          example: $
+    Language:
       type: object
+      description: Language spoken in the country
       properties:
-        objects:
-          type: array
-          description: Array of country records
-          items:
-            $ref: '#/components/schemas/Country'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    Links:
+        name:
+          type: string
+          description: English name of the language
+        native:
+          type: string
+          description: Native name of the language
+        iso_code:
+          type: string
+          description: ISO 639 language code
+    Meta:
       type: object
-      description: External reference links for the country
+      description: Pagination metadata
       properties:
-        official:
+        total:
+          type: integer
+          description: Total number of matched records
+          example: 249
+        count:
+          type: integer
+          description: Number of records returned in this response
+          example: 25
+        limit:
+          type: integer
+          description: Records per page limit used for this request
+          example: 25
+        offset:
+          type: integer
+          description: Number of records skipped
+          example: 0
+        more:
+          type: boolean
+          description: True if additional records exist beyond this page
+          example: true
+        request_id:
           type: string
-          format: uri
-          description: Official government website URL
-        wikipedia:
-          type: string
-          format: uri
-          description: Wikipedia article URL
-        open_street_maps:
-          type: string
-          format: uri
-          description: OpenStreetMap URL
-        google_maps:
-          type: string
-          format: uri
-          description: Google Maps URL
-    Cars:
-      type: object
-      description: Automobile-related country information
-      properties:
-        driving_side:
-          type: string
-          description: Side of the road vehicles drive on
-          enum:
-          - left
-          - right
-        signs:
-          type: array
-          description: International vehicle registration codes
-          items:
-            type: string
-          example:
-          - USA
-    Parent:
-      type: object
-      description: Sovereign parent country for dependencies
-      properties:
-        alpha_2:
-          type: string
-          description: ISO alpha-2 code of parent country
-        alpha_3:
-          type: string
-          description: ISO alpha-3 code of parent country
-    CountryCoordinates:
-      type: object
-      description: Geographic center coordinates
-      properties:
-        lat:
-          type: number
-          description: Latitude of geographic center
-          example: 38.0
-        lng:
-          type: number
-          description: Longitude of geographic center
-          example: -97.0
-  parameters:
-    pretty:
-      name: pretty
-      in: query
-      description: Pretty-print JSON output
-      required: false
-      schema:
-        type: boolean
-        default: false
-    response_fields:
-      name: response_fields
-      in: query
-      description: Comma-separated allowlist of country fields to include in response
-      required: false
-      schema:
-        type: string
-        example: names.common,codes.alpha_2,flag.emoji
-    response_fields_omit:
-      name: response_fields_omit
-      in: query
-      description: Comma-separated blocklist of country fields to exclude from response
-      required: false
-      schema:
-        type: string
-        example: leaders,economy
-    offset:
-      name: offset
-      in: query
-      description: Number of records to skip for pagination (default 0)
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return per page (1–100, default 25)
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 25
+          description: Unique identifier for this request
+          example: req_01abc123def456
   securitySchemes:
     bearerAuth:
       type: http
