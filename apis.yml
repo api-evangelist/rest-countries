@@ -44,7 +44,7 @@ tags:
 - Geocoding
 - Geography
 - ISO 3166
-- Open-Source
+- Open Source
 - Public APIs
 - Reference Data
 - Currency
@@ -67,6 +67,7 @@ tags_raw:
 - Regions
 - Subregions
 - Translations
+- Open-Source
 created: '2026-05-28'
 modified: '2026-09-16'
 specificationVersion: '0.23'

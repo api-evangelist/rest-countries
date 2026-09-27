@@ -79,40 +79,46 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    FieldsQuery:
+      name: fields
+      in: query
+      required: false
+      description: Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`.
+      schema:
+        type: string
+      examples:
+        basic:
+          value: name,capital,region,flags
   schemas:
-    CapitalInfo:
+    Car:
       type: object
-      description: Capital city metadata.
+      description: Vehicular registration data.
       properties:
-        latlng:
+        signs:
           type: array
           items:
-            type: number
-          minItems: 2
-          maxItems: 2
-          description: Capital latitude and longitude.
-    Demonyms:
-      type: object
-      description: Demonyms keyed by language code with gendered variants.
-      additionalProperties:
-        type: object
-        properties:
-          f:
             type: string
-          m:
-            type: string
-    InternationalDirectDialing:
-      type: object
-      description: International calling code descriptor.
-      properties:
-        root:
+          description: Distinguishing (oval) vehicle signs.
+        side:
           type: string
-          description: IDD root (e.g. `+1`).
-        suffixes:
-          type: array
-          items:
-            type: string
-          description: Country code suffixes appended to the root.
+          enum:
+          - left
+          - right
+          description: Driving side.
+    Flags:
+      type: object
+      description: Flag image references.
+      properties:
+        png:
+          type: string
+          format: uri
+        svg:
+          type: string
+          format: uri
+        alt:
+          type: string
+          description: Textual description of the flag for accessibility.
     Error:
       type: object
       properties:
@@ -125,16 +131,25 @@ components:
       required:
       - status
       - message
-    Maps:
+    CapitalInfo:
       type: object
-      description: Links to external mapping services.
+      description: Capital city metadata.
       properties:
-        googleMaps:
+        latlng:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+          description: Capital latitude and longitude.
+    Currency:
+      type: object
+      description: Currency descriptor keyed by ISO 4217 code.
+      properties:
+        name:
           type: string
-          format: uri
-        openStreetMaps:
+        symbol:
           type: string
-          format: uri
     Country:
       type: object
       description: A country resource as returned by the REST Countries API.
@@ -272,24 +287,28 @@ components:
           $ref: '#/components/schemas/CapitalInfo'
         postalCode:
           $ref: '#/components/schemas/PostalCode'
-    Currency:
+    InternationalDirectDialing:
       type: object
-      description: Currency descriptor keyed by ISO 4217 code.
+      description: International calling code descriptor.
       properties:
-        name:
+        root:
           type: string
-        symbol:
-          type: string
-    CoatOfArms:
+          description: IDD root (e.g. `+1`).
+        suffixes:
+          type: array
+          items:
+            type: string
+          description: Country code suffixes appended to the root.
+    Demonyms:
       type: object
-      description: Coat of arms image references.
-      properties:
-        png:
-          type: string
-          format: uri
-        svg:
-          type: string
-          format: uri
+      description: Demonyms keyed by language code with gendered variants.
+      additionalProperties:
+        type: object
+        properties:
+          f:
+            type: string
+          m:
+            type: string
     PostalCode:
       type: object
       description: Postal code format descriptor.
@@ -300,21 +319,26 @@ components:
         regex:
           type: string
           description: Regular expression validating postal codes.
-    Car:
+    Maps:
       type: object
-      description: Vehicular registration data.
+      description: Links to external mapping services.
       properties:
-        signs:
-          type: array
-          items:
-            type: string
-          description: Distinguishing (oval) vehicle signs.
-        side:
+        googleMaps:
           type: string
-          enum:
-          - left
-          - right
-          description: Driving side.
+          format: uri
+        openStreetMaps:
+          type: string
+          format: uri
+    CoatOfArms:
+      type: object
+      description: Coat of arms image references.
+      properties:
+        png:
+          type: string
+          format: uri
+        svg:
+          type: string
+          format: uri
     Name:
       type: object
       description: Country name, including official and common forms plus per-language native names.
@@ -335,30 +359,6 @@ components:
                 type: string
               common:
                 type: string
-    Flags:
-      type: object
-      description: Flag image references.
-      properties:
-        png:
-          type: string
-          format: uri
-        svg:
-          type: string
-          format: uri
-        alt:
-          type: string
-          description: Textual description of the flag for accessibility.
-  parameters:
-    FieldsQuery:
-      name: fields
-      in: query
-      required: false
-      description: Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`.
-      schema:
-        type: string
-      examples:
-        basic:
-          value: name,capital,region,flags
   responses:
     NotFound:
       description: No country matched the query.
