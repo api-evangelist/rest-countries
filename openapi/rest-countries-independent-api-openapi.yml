@@ -44,89 +44,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
-  parameters:
-    FieldsQuery:
-      name: fields
-      in: query
-      required: false
-      description: Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`.
-      schema:
-        type: string
-      examples:
-        basic:
-          value: name,capital,region,flags
   schemas:
-    Car:
-      type: object
-      description: Vehicular registration data.
-      properties:
-        signs:
-          type: array
-          items:
-            type: string
-          description: Distinguishing (oval) vehicle signs.
-        side:
-          type: string
-          enum:
-          - left
-          - right
-          description: Driving side.
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code.
-        message:
-          type: string
-          description: Human readable error message.
-      required:
-      - status
-      - message
-    Flags:
-      type: object
-      description: Flag image references.
-      properties:
-        png:
-          type: string
-          format: uri
-        svg:
-          type: string
-          format: uri
-        alt:
-          type: string
-          description: Textual description of the flag for accessibility.
-    CapitalInfo:
-      type: object
-      description: Capital city metadata.
-      properties:
-        latlng:
-          type: array
-          items:
-            type: number
-          minItems: 2
-          maxItems: 2
-          description: Capital latitude and longitude.
-    Currency:
-      type: object
-      description: Currency descriptor keyed by ISO 4217 code.
-      properties:
-        name:
-          type: string
-        symbol:
-          type: string
-    InternationalDirectDialing:
-      type: object
-      description: International calling code descriptor.
-      properties:
-        root:
-          type: string
-          description: IDD root (e.g. `+1`).
-        suffixes:
-          type: array
-          items:
-            type: string
-          description: Country code suffixes appended to the root.
     Country:
       type: object
       description: A country resource as returned by the REST Countries API.
@@ -264,16 +182,14 @@ components:
           $ref: '#/components/schemas/CapitalInfo'
         postalCode:
           $ref: '#/components/schemas/PostalCode'
-    Demonyms:
+    Currency:
       type: object
-      description: Demonyms keyed by language code with gendered variants.
-      additionalProperties:
-        type: object
-        properties:
-          f:
-            type: string
-          m:
-            type: string
+      description: Currency descriptor keyed by ISO 4217 code.
+      properties:
+        name:
+          type: string
+        symbol:
+          type: string
     PostalCode:
       type: object
       description: Postal code format descriptor.
@@ -284,16 +200,6 @@ components:
         regex:
           type: string
           description: Regular expression validating postal codes.
-    Maps:
-      type: object
-      description: Links to external mapping services.
-      properties:
-        googleMaps:
-          type: string
-          format: uri
-        openStreetMaps:
-          type: string
-          format: uri
     CoatOfArms:
       type: object
       description: Coat of arms image references.
@@ -324,6 +230,100 @@ components:
                 type: string
               common:
                 type: string
+    Flags:
+      type: object
+      description: Flag image references.
+      properties:
+        png:
+          type: string
+          format: uri
+        svg:
+          type: string
+          format: uri
+        alt:
+          type: string
+          description: Textual description of the flag for accessibility.
+    CapitalInfo:
+      type: object
+      description: Capital city metadata.
+      properties:
+        latlng:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+          description: Capital latitude and longitude.
+    Maps:
+      type: object
+      description: Links to external mapping services.
+      properties:
+        googleMaps:
+          type: string
+          format: uri
+        openStreetMaps:
+          type: string
+          format: uri
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+        message:
+          type: string
+          description: Human readable error message.
+      required:
+      - status
+      - message
+    Car:
+      type: object
+      description: Vehicular registration data.
+      properties:
+        signs:
+          type: array
+          items:
+            type: string
+          description: Distinguishing (oval) vehicle signs.
+        side:
+          type: string
+          enum:
+          - left
+          - right
+          description: Driving side.
+    InternationalDirectDialing:
+      type: object
+      description: International calling code descriptor.
+      properties:
+        root:
+          type: string
+          description: IDD root (e.g. `+1`).
+        suffixes:
+          type: array
+          items:
+            type: string
+          description: Country code suffixes appended to the root.
+    Demonyms:
+      type: object
+      description: Demonyms keyed by language code with gendered variants.
+      additionalProperties:
+        type: object
+        properties:
+          f:
+            type: string
+          m:
+            type: string
+  parameters:
+    FieldsQuery:
+      name: fields
+      in: query
+      required: false
+      description: Comma-separated list of fields to return on each country. Up to 10 fields may be requested. Required on `/all`.
+      schema:
+        type: string
+      examples:
+        basic:
+          value: name,capital,region,flags
   responses:
     BadRequest:
       description: The request was rejected (typically because `fields` was omitted on `/all`).
