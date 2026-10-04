@@ -217,24 +217,16 @@ components:
           $ref: '#/components/schemas/CapitalInfo'
         postalCode:
           $ref: '#/components/schemas/PostalCode'
-    Currency:
+    Demonyms:
       type: object
-      description: Currency descriptor keyed by ISO 4217 code.
-      properties:
-        name:
-          type: string
-        symbol:
-          type: string
-    CoatOfArms:
-      type: object
-      description: Coat of arms image references.
-      properties:
-        png:
-          type: string
-          format: uri
-        svg:
-          type: string
-          format: uri
+      description: Demonyms keyed by language code with gendered variants.
+      additionalProperties:
+        type: object
+        properties:
+          f:
+            type: string
+          m:
+            type: string
     Name:
       type: object
       description: Country name, including official and common forms plus per-language native names.
@@ -282,6 +274,24 @@ components:
           items:
             type: string
           description: Country code suffixes appended to the root.
+    Currency:
+      type: object
+      description: Currency descriptor keyed by ISO 4217 code.
+      properties:
+        name:
+          type: string
+        symbol:
+          type: string
+    CoatOfArms:
+      type: object
+      description: Coat of arms image references.
+      properties:
+        png:
+          type: string
+          format: uri
+        svg:
+          type: string
+          format: uri
     Flags:
       type: object
       description: Flag image references.
@@ -295,17 +305,6 @@ components:
         alt:
           type: string
           description: Textual description of the flag for accessibility.
-    CapitalInfo:
-      type: object
-      description: Capital city metadata.
-      properties:
-        latlng:
-          type: array
-          items:
-            type: number
-          minItems: 2
-          maxItems: 2
-          description: Capital latitude and longitude.
     Maps:
       type: object
       description: Links to external mapping services.
@@ -338,16 +337,24 @@ components:
         regex:
           type: string
           description: Regular expression validating postal codes.
-    Demonyms:
+    CapitalInfo:
       type: object
-      description: Demonyms keyed by language code with gendered variants.
-      additionalProperties:
-        type: object
-        properties:
-          f:
-            type: string
-          m:
-            type: string
+      description: Capital city metadata.
+      properties:
+        latlng:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+          description: Capital latitude and longitude.
+  responses:
+    NotFound:
+      description: No country matched the query.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     FieldsQuery:
       name: fields
@@ -359,13 +366,6 @@ components:
       examples:
         basic:
           value: name,capital,region,flags
-  responses:
-    NotFound:
-      description: No country matched the query.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
 externalDocs:
   description: REST Countries Documentation
   url: https://restcountries.com

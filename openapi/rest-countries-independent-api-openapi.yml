@@ -182,34 +182,16 @@ components:
           $ref: '#/components/schemas/CapitalInfo'
         postalCode:
           $ref: '#/components/schemas/PostalCode'
-    Currency:
+    Demonyms:
       type: object
-      description: Currency descriptor keyed by ISO 4217 code.
-      properties:
-        name:
-          type: string
-        symbol:
-          type: string
-    PostalCode:
-      type: object
-      description: Postal code format descriptor.
-      properties:
-        format:
-          type: string
-          description: Human-readable postal code format mask.
-        regex:
-          type: string
-          description: Regular expression validating postal codes.
-    CoatOfArms:
-      type: object
-      description: Coat of arms image references.
-      properties:
-        png:
-          type: string
-          format: uri
-        svg:
-          type: string
-          format: uri
+      description: Demonyms keyed by language code with gendered variants.
+      additionalProperties:
+        type: object
+        properties:
+          f:
+            type: string
+          m:
+            type: string
     Name:
       type: object
       description: Country name, including official and common forms plus per-language native names.
@@ -230,52 +212,6 @@ components:
                 type: string
               common:
                 type: string
-    Flags:
-      type: object
-      description: Flag image references.
-      properties:
-        png:
-          type: string
-          format: uri
-        svg:
-          type: string
-          format: uri
-        alt:
-          type: string
-          description: Textual description of the flag for accessibility.
-    CapitalInfo:
-      type: object
-      description: Capital city metadata.
-      properties:
-        latlng:
-          type: array
-          items:
-            type: number
-          minItems: 2
-          maxItems: 2
-          description: Capital latitude and longitude.
-    Maps:
-      type: object
-      description: Links to external mapping services.
-      properties:
-        googleMaps:
-          type: string
-          format: uri
-        openStreetMaps:
-          type: string
-          format: uri
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code.
-        message:
-          type: string
-          description: Human readable error message.
-      required:
-      - status
-      - message
     Car:
       type: object
       description: Vehicular registration data.
@@ -303,16 +239,87 @@ components:
           items:
             type: string
           description: Country code suffixes appended to the root.
-    Demonyms:
+    Currency:
       type: object
-      description: Demonyms keyed by language code with gendered variants.
-      additionalProperties:
-        type: object
-        properties:
-          f:
-            type: string
-          m:
-            type: string
+      description: Currency descriptor keyed by ISO 4217 code.
+      properties:
+        name:
+          type: string
+        symbol:
+          type: string
+    CoatOfArms:
+      type: object
+      description: Coat of arms image references.
+      properties:
+        png:
+          type: string
+          format: uri
+        svg:
+          type: string
+          format: uri
+    Flags:
+      type: object
+      description: Flag image references.
+      properties:
+        png:
+          type: string
+          format: uri
+        svg:
+          type: string
+          format: uri
+        alt:
+          type: string
+          description: Textual description of the flag for accessibility.
+    Maps:
+      type: object
+      description: Links to external mapping services.
+      properties:
+        googleMaps:
+          type: string
+          format: uri
+        openStreetMaps:
+          type: string
+          format: uri
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+        message:
+          type: string
+          description: Human readable error message.
+      required:
+      - status
+      - message
+    PostalCode:
+      type: object
+      description: Postal code format descriptor.
+      properties:
+        format:
+          type: string
+          description: Human-readable postal code format mask.
+        regex:
+          type: string
+          description: Regular expression validating postal codes.
+    CapitalInfo:
+      type: object
+      description: Capital city metadata.
+      properties:
+        latlng:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+          description: Capital latitude and longitude.
+  responses:
+    BadRequest:
+      description: The request was rejected (typically because `fields` was omitted on `/all`).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     FieldsQuery:
       name: fields
@@ -324,13 +331,6 @@ components:
       examples:
         basic:
           value: name,capital,region,flags
-  responses:
-    BadRequest:
-      description: The request was rejected (typically because `fields` was omitted on `/all`).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
 externalDocs:
   description: REST Countries Documentation
   url: https://restcountries.com
