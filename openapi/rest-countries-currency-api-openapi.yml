@@ -196,41 +196,6 @@ components:
             type: string
           m:
             type: string
-    Name:
-      type: object
-      description: Country name, including official and common forms plus per-language native names.
-      properties:
-        common:
-          type: string
-          description: Common country name in English.
-        official:
-          type: string
-          description: Official country name in English.
-        nativeName:
-          type: object
-          description: Native names keyed by ISO 639-3 language code.
-          additionalProperties:
-            type: object
-            properties:
-              official:
-                type: string
-              common:
-                type: string
-    Car:
-      type: object
-      description: Vehicular registration data.
-      properties:
-        signs:
-          type: array
-          items:
-            type: string
-          description: Distinguishing (oval) vehicle signs.
-        side:
-          type: string
-          enum:
-          - left
-          - right
-          description: Driving side.
     InternationalDirectDialing:
       type: object
       description: International calling code descriptor.
@@ -251,16 +216,16 @@ components:
           type: string
         symbol:
           type: string
-    CoatOfArms:
+    PostalCode:
       type: object
-      description: Coat of arms image references.
+      description: Postal code format descriptor.
       properties:
-        png:
+        format:
           type: string
-          format: uri
-        svg:
+          description: Human-readable postal code format mask.
+        regex:
           type: string
-          format: uri
+          description: Regular expression validating postal codes.
     Flags:
       type: object
       description: Flag image references.
@@ -284,6 +249,52 @@ components:
         openStreetMaps:
           type: string
           format: uri
+    Name:
+      type: object
+      description: Country name, including official and common forms plus per-language native names.
+      properties:
+        common:
+          type: string
+          description: Common country name in English.
+        official:
+          type: string
+          description: Official country name in English.
+        nativeName:
+          type: object
+          description: Native names keyed by ISO 639-3 language code.
+          additionalProperties:
+            type: object
+            properties:
+              official:
+                type: string
+              common:
+                type: string
+    CapitalInfo:
+      type: object
+      description: Capital city metadata.
+      properties:
+        latlng:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+          description: Capital latitude and longitude.
+    Car:
+      type: object
+      description: Vehicular registration data.
+      properties:
+        signs:
+          type: array
+          items:
+            type: string
+          description: Distinguishing (oval) vehicle signs.
+        side:
+          type: string
+          enum:
+          - left
+          - right
+          description: Driving side.
     Error:
       type: object
       properties:
@@ -296,34 +307,16 @@ components:
       required:
       - status
       - message
-    PostalCode:
+    CoatOfArms:
       type: object
-      description: Postal code format descriptor.
+      description: Coat of arms image references.
       properties:
-        format:
+        png:
           type: string
-          description: Human-readable postal code format mask.
-        regex:
+          format: uri
+        svg:
           type: string
-          description: Regular expression validating postal codes.
-    CapitalInfo:
-      type: object
-      description: Capital city metadata.
-      properties:
-        latlng:
-          type: array
-          items:
-            type: number
-          minItems: 2
-          maxItems: 2
-          description: Capital latitude and longitude.
-  responses:
-    NotFound:
-      description: No country matched the query.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          format: uri
   parameters:
     FieldsQuery:
       name: fields
@@ -335,6 +328,13 @@ components:
       examples:
         basic:
           value: name,capital,region,flags
+  responses:
+    NotFound:
+      description: No country matched the query.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
 externalDocs:
   description: REST Countries Documentation
   url: https://restcountries.com
